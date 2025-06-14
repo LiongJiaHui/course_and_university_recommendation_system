@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <title>Main Page</title>
+    <title>Course and University Recommendation System</title>
+    
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
