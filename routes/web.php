@@ -13,6 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Main Page route
 Route::get('/', function () {
     return view('MainPage');
 });
+
+// Student Information route
+Route::get('/studentinformation', function () {
+    return view('student.StudentInformation');
+})->name('studentinformation');
+
+// Subject Information route
+Route::get('/subjectinformation', function () {
+    return view('student.SubjectInformation');
+})->name('subjectinformation');
+
+// Student Preferences route
+Route::get('/studentpreferences', function () {
+    return view('student.StudentPreferences');
+})->name('studentpreferences');
+
+
+// Administrator section
+Route::get('/adminLogin', function () {
+    return view('Administrator.LoginPage');
+})->name('adminLogin');

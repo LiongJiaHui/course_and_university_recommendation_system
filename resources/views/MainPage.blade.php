@@ -9,22 +9,24 @@
 </head>
 <body>
     <div>
-        <div> 
-            <h1>Course and University Recommendation System</h1>
-        </div>
+        <x-header title="Main Page"/>
         <div>
             <h2>Please choose your role: </h2>
         </div>
         <div>
             <div>
-                <button>Student</button>
+                <a href="studentinformation">
+                    <button>Student</button>
+                </a>
             </div>
             <div>
-                <button>Administrator</button>
+                <a href="adminLogin">
+                    <button>Administrator</button>
+                </a>
             </div>
         </div>
+        <x-footer />
     </div>
-    <x-footer />
 </body>
 
 </html>
