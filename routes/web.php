@@ -38,3 +38,7 @@ Route::get('/studentpreferences', function () {
 Route::get('/adminLogin', function () {
     return view('Administrator.LoginPage');
 })->name('adminLogin');
+
+Route::get('/adminMenu', function(){
+    return view('Administrator.MenuSection');
+})->name('adminMenu');

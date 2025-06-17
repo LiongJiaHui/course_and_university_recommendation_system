@@ -10,7 +10,7 @@
 
             </div>
             <div>
-                <a href="">
+                <a href="adminLogin">
                     <button>Log Out</button>
                 </a>
             </div>

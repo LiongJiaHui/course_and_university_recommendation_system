@@ -10,10 +10,10 @@
         <div>
             <form>
                 <label>Name: </label>
-                <input></input>
+                <input type="text"></input>
                 <br>
                 <label>Password: </label>
-                <input></input>
+                <input type="text"></input>
                 <br>
             </form>
         </div>
