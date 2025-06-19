@@ -41,6 +41,7 @@
                             <option value="Pahang">Pahang</option>
                             <option value="Kelantan">Kelantan</option>
                             <option value="Johor">Johor</option>
+                            <option value="PutraJaya">PutraJaya</option>
                         </select>
                         <br>
                     </div>
@@ -54,9 +55,8 @@
                     </div>
 
                     <div>
-                        <label>PostCode: </label>
-                        <input></input>
-                        <br>
+                        <label>Postcode:</label>
+                        <input name="postcode" id="postcode" type="text" readonly>
                     </div>
                 </form>
                 <div>
@@ -71,4 +71,41 @@
         </div>
         <x-footer />
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        // When user selects a state, load cities
+        $('#state-dropdown').on('change', function () {
+            var stateID = $(this).val();
+            $('#city-dropdown').html('<option value="">Loading...</option>');
+            $('#postcode').val('');
+
+            if (stateID) {
+                $.ajax({
+                    url: "{{ route('getCities') }}",
+                    type: "GET",
+                    data: { state_id: stateID },
+                    success: function (res) {
+                        $('#city-dropdown').html('<option value="">-- Select City --</option>');
+                        $.each(res, function (key, city) {
+                            $('#city-dropdown').append(
+                                '<option value="' + city.id + '" data-postcode="' + city.postcode + '">' + city.name + '</option>'
+                            );
+                        });
+                    }
+                });
+            } else {
+                $('#city-dropdown').html('<option value="">-- Select City --</option>');
+                $('#postcode').val('');
+            }
+        });
+
+        // When city is selected, show postcode
+        $('#city-dropdown').on('change', function () {
+            var postcode = $('option:selected', this).data('postcode');
+            $('#postcode').val(postcode || '');
+        });
+
+    </script>
 </body>

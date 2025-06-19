@@ -17,10 +17,14 @@ class CreateUniversitiesTable extends Migration
             $table->id();
             $table->string('uni_name');
             $table->string('uni_address');
-            $table->string('city_town');
-            $table->int('postcode');
-            $table->string('state');
             $table->string('campus');
+            $table->string('website');
+            $table->string('uni_type');
+            $table->string('contact_no',20);
+            $table->unsignedInteger('ranking_qs');
+            $table->unsignedInteger('ranking_the');
+            $table->foreignId('admin_id')->constrained('admins')->onDelete('cascade');
+            $table->foreignId('state_id')->constrained('state_name')->onDelete('cascade');
             $table->timestamps();
         });
     }

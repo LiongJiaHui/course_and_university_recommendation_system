@@ -1,0 +1,16 @@
+INSERT INTO states(state_name) VALUES ('Johor');
+INSERT INTO states(state_name) VALUES ('Kedah');
+INSERT INTO states(state_name) VALUES ('Kelantan');
+INSERT INTO states(state_name) VALUES ('Kuala Lumpur');
+INSERT INTO states(state_name) VALUES ('Labuan');
+INSERT INTO states(state_name) VALUES ('Melaka');
+INSERT INTO states(state_name) VALUES ('Negeri Sembilan');
+INSERT INTO states(state_name) VALUES ('Pahang');
+INSERT INTO states(state_name) VALUES ('Perak');
+INSERT INTO states(state_name) VALUES ('Perlis');
+INSERT INTO states(state_name) VALUES ('Pulau Pinang');
+INSERT INTO states(state_name) VALUES ('Putrajaya');
+INSERT INTO states(state_name) VALUES ('Sabah');
+INSERT INTO states(state_name) VALUES ('Sarawak');
+INSERT INTO states(state_name) VALUES ('Selangor');
+INSERT INTO states(state_name) VALUES ('Terengganu');

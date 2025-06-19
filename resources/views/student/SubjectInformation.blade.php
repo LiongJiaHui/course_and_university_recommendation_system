@@ -12,11 +12,11 @@
                 <form>
                     <label>Subject</label>
                     <select>
-                        <option value="subject1">Subject 1</option>
-                        <option value="subject2">Subject 2</option>
-                        <option value="subject3">Subject 3</option>
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
                     </select>
-                    <input type="text" name="subject1" value="subject1"> Subject 1</input>
+                    <input type="text" name="subject1marks" value="{{ old('subject1marks') }}"></input>
                 </form>
             </div>
             <div>

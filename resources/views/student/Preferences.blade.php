@@ -9,8 +9,14 @@
         <div>
             <div>
                 <form>
-                    <input type="radio">Public Universities</input>
-                    <input type="radio">Private Universities</input>
+                    <div>
+                        <input type="radio">Public Universities</input>
+                        <input type="radio">Private Universities</input>
+                    </div>
+                    <div>
+                        <label></label>
+                        <input type="checkbox"></input>
+                    </div>
                 </form>
                 <div>
                     <button type="submit">Submit</button>
