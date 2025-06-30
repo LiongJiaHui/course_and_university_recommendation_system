@@ -10,6 +10,7 @@
             <div>
                 <form>
                     <div>
+                        <label>University Type</label>
                         <input type="radio">Public Universities</input>
                         <input type="radio">Private Universities</input>
                     </div>

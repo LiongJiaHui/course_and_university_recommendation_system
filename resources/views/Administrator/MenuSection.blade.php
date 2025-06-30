@@ -7,7 +7,29 @@
         <x-header title="Administrator Menu Section" />
         <div>
             <div>
+                <div>
+                    <a href="">
+                        <button>University Information</button>
+                    </a>
+                </div>
 
+                <div>
+                    <a href="">
+                        <button>Course Information</button>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="">
+                        <button>Course Details Information</button>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="">
+                        <button>Administrator Management</button>
+                    </a>
+                </div>
             </div>
             <div>
                 <a href="adminLogin">

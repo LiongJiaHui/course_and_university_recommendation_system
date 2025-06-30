@@ -1,7 +1,7 @@
 INSERT INTO states(state_name) VALUES ('Johor');
 INSERT INTO states(state_name) VALUES ('Kedah');
 INSERT INTO states(state_name) VALUES ('Kelantan');
-INSERT INTO states(state_name) VALUES ('Kuala Lumpur');
+INSERT INTO states(state_name) VALUES ('Wilayah Persekutuan Kuala Lumpur');
 INSERT INTO states(state_name) VALUES ('Labuan');
 INSERT INTO states(state_name) VALUES ('Melaka');
 INSERT INTO states(state_name) VALUES ('Negeri Sembilan');

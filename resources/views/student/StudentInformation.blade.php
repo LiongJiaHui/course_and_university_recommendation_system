@@ -27,21 +27,28 @@
                         <label>State: </label>
                         <select name="state" id="state-dropdown" required>
                             <option value="">---Select State---</option>
-                            <option value="Perlis">Perlis</option>
-                            <option value="Kuala Lumpur">Kuala Lumpur</option>
-                            <option value="Selangor">Selangor</option>
-                            <option value="Perak">Perak</option>
-                            <option value="Pahang">Pahang</option>
-                            <option value="Sarawak">Sarawak</option>
-                            <option value="Sabah">Sabah</option>
-                            <option value="Melaka">Melaka</option>
-                            <option value="Kedah">Kedah</option>
-                            <option value="Negeri Sembilan">Negeri Sembilan</option>
-                            <option value="Terengganu">Terengganu</option>
-                            <option value="Pahang">Pahang</option>
-                            <option value="Kelantan">Kelantan</option>
                             <option value="Johor">Johor</option>
-                            <option value="PutraJaya">PutraJaya</option>
+                            <option value="Kedah">Kedah</option>
+                            <option value="Kelantan">Kelantan</option>
+                            <option value="Melaka">Melaka</option>
+                            <option value="Negeri Sembilan">Negeri Sembilan</option>
+                            <option value="Pahang">Pahang</option>
+                            <option value="Perak">Perak</option>
+                            <option value="Perlis">Perlis</option>
+                            <option value="Pulau Pinang">Pulau Pinang</option>
+                            <option value="Sabah">Sabah</option>
+                            <option value="Sarawak">Sarawak</option>
+                            <option value="Selangor">Selangor</option>
+                            <option value="Terengganu">Terengganu</option>
+                            <option value="Wilayah Persekutuan">Wilayah Persekutuan</option>
+                        </select>
+                        <br>
+                    </div>
+
+                    <div>
+                        <label>Area: </label>
+                        <select name="area" id="area-dropdown" required>
+                            <option value="">---Select Area ---</option>
                         </select>
                         <br>
                     </div>

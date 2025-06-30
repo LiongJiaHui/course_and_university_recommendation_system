@@ -8,13 +8,25 @@
     <div>
         <x-header title="Administrator Login Page" />
         <div>
+
+
             <form>
-                <label>Name: </label>
-                <input type="text"></input>
-                <br>
-                <label>Password: </label>
-                <input type="text"></input>
-                <br>
+                @csrf
+                <div>
+                    <label>Name: </label>
+                    <input type="text"></input>
+                    <br>
+                </div>
+
+                <div>
+                    <label>Password: </label>
+                    <input type="text"></input>
+                    <br>
+                </div>
+
+                <div>
+                    <button type="submit">Login</button>
+                </div>
             </form>
         </div>
         <x-footer />
