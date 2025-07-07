@@ -42,3 +42,17 @@ Route::get('/adminLogin', function () {
 Route::get('/adminMenu', function(){
     return view('Administrator.MenuSection');
 })->name('adminMenu');
+
+// University section
+Route::get('/adminUniversityList', function () {
+    return view('Administrator.University.UniversityList');
+})->name('adminUniversityList');
+
+
+// Course Section
+
+
+// Course Category Section
+
+
+// Administrator Management Section

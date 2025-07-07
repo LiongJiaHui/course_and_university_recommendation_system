@@ -21,6 +21,7 @@ class CreateUniversitiesTable extends Migration
             $table->string('website');
             $table->string('uni_type');
             $table->string('contact_no',20);
+            $table->string('email');
 
             // If ranking number is 1, ranking_the_no_start is 1, but ranking_the_no_end is Null. 
 

@@ -3,7 +3,7 @@
 </head>
 
 <body>
-    <x-header title="Course Category"/>
+    <x-header title="Course Category List"/>
     <div>
 
     </div>

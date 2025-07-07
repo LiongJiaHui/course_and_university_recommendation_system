@@ -16,9 +16,9 @@ class CreateCoursedetailsTable extends Migration
         Schema::create('coursedetails', function (Blueprint $table) {
             $table->id();
             $table->string('course_honour_name');
-            $table->unsignedInteger('tuition_fees');
+            $table->unsignedDouble('tuition_fees');
             $table->unsignedInteger('credit_hours');
-            $table->unsignedInteger('duration');
+            $table->unsignedDouble('duration');
             $table->unsignedInteger('minimum_grade');
             $table->string('specific_subjects');
             $table->unsignedInteger('merit_mark')->nullable();

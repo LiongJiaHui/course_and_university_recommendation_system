@@ -54,7 +54,7 @@
                     </div>
 
                     <div>
-                        <label>City/Town: </label>
+                        <label>Area: </label>
                         <select name="city" id="city-dropdown" required>
                             <option value="">---Select City Or Town ---</option>
                         </select>

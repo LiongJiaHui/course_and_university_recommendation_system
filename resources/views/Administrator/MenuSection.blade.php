@@ -15,13 +15,13 @@
 
                 <div>
                     <a href="">
-                        <button>Course Information</button>
+                        <button>Course Category</button>
                     </a>
                 </div>
 
                 <div>
                     <a href="">
-                        <button>Course Details Information</button>
+                        <button>Course Information</button>
                     </a>
                 </div>
 
