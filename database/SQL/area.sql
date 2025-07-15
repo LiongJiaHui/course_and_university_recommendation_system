@@ -516,8 +516,8 @@ INSERT INTO areas (area_name, postcode, state_id) VALUES ("Selama", "34100", 9);
 INSERT INTO areas (area_name, postcode, state_id) VALUES ("Selama", "34120", 9); -- area_id: 485
 INSERT INTO areas (area_name, postcode, state_id) VALUES ("Selama", "34130", 9); -- area_id: 486
 INSERT INTO areas (area_name, postcode, state_id) VALUES ("Rantau Panjang", "34140", 9); -- area_id: 487
-INSERT INTO areas (area_name, postcode, state_id) VALUES ("Parit Buntar", 34200"", 9); -- area_id: 488
-INSERT INTO areas (area_name, postcode, state_id) VALUES ("Tanjong Piandang", "34250", 9); -- area_id: 489
+INSERT INTO areas (area_name, postcode, state_id) VALUES ("Parit Buntar", "34200", 9); -- area_id: 489
+INSERT INTO areas (area_name, postcode, state_id) VALUES ("Tanjong Piandang", "34250", 9); -- area_id: 488
 INSERT INTO areas (area_name, postcode, state_id) VALUES ("Bagan Serai", "34300", 9); -- area_id: 490
 INSERT INTO areas (area_name, postcode, state_id) VALUES ("Bagan Serai", "34310", 9); -- area_id: 491
 INSERT INTO areas (area_name, postcode, state_id) VALUES ("Kuala Kurau", "34350", 9); -- area_id: 492

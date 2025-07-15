@@ -5,6 +5,8 @@
 
 -- Tuition fees website: https://study.um.edu.my/tuition-fee
 
+-- https://online.mohe.gov.my/epanduan/kategoriCalon?jenprog=stpm
+
 -- NOTE: These requirements of the course details are listed using STPM only, but those course details involved the SPM result would not be included here. 
 
 -- Universiti Malaya (UM)
@@ -106,6 +108,8 @@ INSERT INTO coursedetails(course_honour_name, tuition_fees, credit_hours, durati
 
 
 -- Universiti Islam Antarabangsa Malaysia (UIAM)
+
+-- NOTE: The tuition fees and the requirement are in https://www.iium.edu.my/v2/undergraduate-malaysian/
 
 -- -- Arts and Humanities
 INSERT INTO coursedetails(course_honour_name, tuition_fees, credit_hours, durations, minimum_grade, specific_subjects, merit_mark, english_requirement_skill, ranking_qs_no_start_by_subject, ranking_qs_no_end_by_subject, ranking_qs_year_by_subject, ranking_the_no_start_by_subject, ranking_qs_no_end_by_subject, ranking_qs_year_by_subject, course_website, course_id, university_id, admin_id) VALUES ("", .00, , , , "", , 2.0, , , , , , , "", , , 1);

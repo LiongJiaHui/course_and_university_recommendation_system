@@ -41,7 +41,7 @@ class CreateUniversitiesTable extends Migration
 
             $table->foreignId('admin_id')->constrained('admins')->onDelete('set null');
             $table->foreignId('state_id')->constrained('states')->onDelete('set null');
-            $table->foreignId('city_id')->constrained('cities')->onDelete('set null');
+            $table->foreignId('area_id')->constrained('areas')->onDelete('set null');
             $table->timestamps();
         });
     }

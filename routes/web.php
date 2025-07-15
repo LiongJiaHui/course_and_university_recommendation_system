@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\StateController;
+use App\Http\Controllers\AreaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,8 +33,13 @@ Route::get('/subjectinformation', function () {
 
 // Student Preferences route
 Route::get('/studentpreferences', function () {
-    return view('student.StudentPreferences');
+    return view('student.Preferences');
 })->name('studentpreferences');
+
+// State and Area routes
+Route::get('/get-areas/{state_id}', [StateController::class, 'getAreas']);
+Route::get('/get-postcodes/{area_name}', [AreaController::class, 'getPostCodes']);
+Route::get('/studentinformation', [StateController::class, 'passState']);
 
 
 // Administrator section

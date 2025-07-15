@@ -1,5 +1,6 @@
 <head>
     <title>Course and University Recommendation System: Student Preferences</title>
+    <link rel="stylesheet" href="{{ asset('css/student.css') }}">
 
 </head>
 
@@ -8,14 +9,14 @@
         <x-header title="Student Preferences" />
         <div>
             <div>
-                <form>
+                <form method="POST">
                     <div>
                         <label>University Type: </label>
-                        <input type="radio">Public Universities</input>
-                        <input type="radio">Private Universities</input>
+                        <input type="radio" name="unitype" id="public_uni" value="public">Public Universities</input>
+                        <input type="radio" name="unitype" id="private_uni">Private Universities</input>
                     </div>
                     <div>
-                        <input type="checkbox"></input>
+                        <input type="radio" name="preference"></input>
                         <label>Location: </label>
                         <select>
                             <option>--- Select State ---</option>
@@ -37,27 +38,35 @@
                         </select>
                     </div>
                     <div>
-                        <input type="checkbox"></input>
+                        <input type="radio" name="preference"></input>
                         <label>Shortest Distance</label>
                     </div>
                     <div>
-                        <input type="checkbox"></input>
+                        <input type="radio" name="preference"></input>
                         <label>Area of Interest: </label>
                         <select>
                             <option></option>
                         </select>
                     </div>
                     <div>
-                        <input type="checkbox"></input>
-                        <label></label>
+                        <input type="radio" name="preference" value="expected_fees"></input>
+                        <label>Expected Total Tuition Fees (For whole study): </label>
+                        <input type="number" min="0"></input>
+                        <label> to </label>
+                        <input type="number"></input>
+                    </div>
+                    <div>
+                        <button type="submit">Submit</button>
                     </div>
                 </form>
-                <div>
-                    <button type="submit">Submit</button>
-                </div>
             </div>
-            <div>
-                    
+
+             <div class="button-row">
+                <div id="back-btn">
+                    <a href="subjectinformation" id="back-btn">
+                        <button id="back-btn">Back</button>
+                    </a>
+                </div>
             </div>
         </div>
         <x-footer />

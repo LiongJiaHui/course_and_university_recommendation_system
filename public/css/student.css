@@ -1,0 +1,78 @@
+div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+div.button-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    border: 3px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+button:hover {
+    background-color: burlywood;
+}
+
+button#back-btn {
+    margin-right: auto;
+    width: 100%;
+}
+
+button#next-btn {
+    margin-left: auto;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+select {
+    display: flex;
+    margin: 0 auto;
+    width: 50%;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 20px;
+}
+
+option {
+    margin: 0 auto;
+    width: 50%;
+    font-size: 20px;
+    padding: 10px;
+}
+
+label {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+    margin: 
+}
+
+input {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+}

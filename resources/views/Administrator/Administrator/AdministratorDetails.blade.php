@@ -6,7 +6,44 @@
 <body>
     <x-header title="Details of the Administrator" />
     <div>
-        
+        <div>
+            <div>
+                <h3>Showing Admin ID: {{ $admin->id }}</h3>
+            </div>
+
+            <div>
+                <table>
+                    <tr>
+                        <td>Admin ID: </td>
+                        <td>{{ $admin->id }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Password: </td>
+                        <td>{{ $admin->password }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <form action="{{  }}" method="POST">
+                                <button id="update">Update</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{{  }}" method="POST">
+                                <button id="delete">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div>
+            <a href="">
+                <button>Back</button>
+            </a>
+        </div>
     </div>
     <x-footer />
 </body>
