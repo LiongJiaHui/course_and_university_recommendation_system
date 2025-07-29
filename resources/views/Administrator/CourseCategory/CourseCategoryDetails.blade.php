@@ -1,7 +1,6 @@
 <head>
     <title>Course and University Recommendation System: Details of the Course Category</title>
 
-
 </head>
 
 <body>
@@ -29,22 +28,22 @@
                 </tr>
 
                 <tr>
+                    <td>Admin: </td>
+                    <td>{{ $category->admin->admin_name }} ({{ $category->admin_id }})</td>
+                </tr>
+
+                <tr>
                     <td>
-                        <form action="{{  }}" method="POST">
-                            <button id="update">Update</button>
-                        </form>
+                        <a href="{{ route('coursecategory.edit', $category->id) }}">
+                                <button class="update" >Update</button>
+                            </a>
                     </td>
-                    <td>
-                            <form action="{{  }}" method="POST">
-                                <button id="delete">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
+                </tr>
             </table>
         </div>
 
         <div id="">
-            <a href="" id="">
+            <a href="{{ route('coursecategory.list') }}" id="">
                 <button id="">Back</button>
             </a>
         </div>

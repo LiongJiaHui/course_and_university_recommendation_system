@@ -1,14 +1,33 @@
 <head>
     <title>Course and University Recommendation System: Course Category List</title>
+
+    <style>
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .pagination nav > div {
+            display: inline-block;
+        }
+    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
     <x-header title="Course Category List"/>
     <div>
         <div id="create">
-            <form action="{{ route('') }}" method="GET" class="create">
+            <form action="{{ route('coursecategory.list') }}" method="GET" class="create">
                 <input type="text" name="search" class="search" placeholder="Search Course Category" value="{{ request('search') }}"></input>
-                <button type="submit">New Course Category</button>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+         <div id="create">
+            <form action="http://localhost:8000/CourseCategory/create" method="GET">
+                <button type="submit" class="create">New Course</button>
             </form>
         </div>
 
@@ -19,6 +38,7 @@
                         <th>ID</th>
                         <th>Course Category</th>
                         <th>Course Aspect</th>
+                        <th>Admin</th>
 
                         <th></th>
                         <th></th>
@@ -27,35 +47,41 @@
                 </thead>
 
                 <tbody>
-                    @foreach ($categories -> $category)
+                    @foreach ($categories as $category)
                     <tr>
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->course_category }}</td>
                         <td>{{ $category->course_aspect }}</td>
+                        <td>{{ $category->admin_id }}</td>
                         <td>
-                            <a href="{{ route('') }}">
+                            <a href="{{ route('coursecategory.show', $category->id) }}">
                                 <button class="Detail">Detail</button>
                             </a>
                         </td>
                         <td>
-                            <a href="{{ route('') }}">
-                                <button class="update">Update</button>
+                            <a href="{{ route('coursecategory.edit', $category->id) }}">
+                                <button class="update" >Update</button>
                             </a>
                         </td>
                         <td>
-                            <form action="{{ route('') }}" method="POST">
+                            <form action="{{ route('coursecategory.destroy', $category->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="delete">Delete</button>
+                                <button class="delete" onclick="return confirm('Confirm to delete?');">Delete</button>
                             </form>
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
 
+        <div>
+            {{ $categories->appends(['search' => request('search')])->links('pagination::bootstrap-4')  }}
+        </div>
+
         <div id="">
-            <a href="" id="">
+            <a href="/adminMenu" id="">
                 <button id="">Back</button>
             </a>
         </div>
