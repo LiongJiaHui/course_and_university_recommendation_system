@@ -25,14 +25,9 @@
 
                     <tr>
                         <td>
-                            <form action="{{  }}" method="POST">
+                            <a href="{{ route('admin.edit', $admin->id) }}">
                                 <button id="update">Update</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="{{  }}" method="POST">
-                                <button id="delete">Delete</button>
-                            </form>
+                            </a>
                         </td>
                     </tr>
                 </table>
@@ -40,7 +35,7 @@
         </div>
 
         <div>
-            <a href="">
+            <a href="{{ route('admin.list') }}">
                 <button>Back</button>
             </a>
         </div>

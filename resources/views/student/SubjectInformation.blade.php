@@ -1,6 +1,6 @@
 <head>
     <title>Course and University Recommendation System: Subject Information</title>
-    <link rel="stylesheet" href="{{ asset('css/student.css') }}">
+    <link rel="stylesheet" href="{{ asset('') }}">
     
 </head>
 
@@ -9,7 +9,7 @@
         <x-header title="Subject Information" />
         <div>
             <div>
-                <form action="" method="POST">
+                <form action="{{ url('/subjectinformation') }}" method="POST">
 
                     @csrf
                     <div>
@@ -57,7 +57,7 @@
                                     <option value="{{ $subject }}">{{ $subject }}</option>
                                 @endforeach
                             </select>
-                            <input type="text" name="subject{{ $i }}marks" placeholder="3.00" value="{{ old("subject{$i}marks") }}"></input>
+                            <input type="text" name="subject{{ $i }}marks" placeholder="4.00" value="{{ old("subject{$i}marks") }}"></input>
                             <br>
                         </div>
                     @endfor
@@ -65,12 +65,12 @@
                     <!-- MUET and Cocurricular -->
                     <div>
                         <label>MUET Score: Band </label>
-                        <input type="text" name="MUETmarks" value="{{ old('MUETmarks') }}"></input>
+                        <input type="text" name="MUETmarks" placeholder="1.0 until 5.0" value="{{ old('MUETmarks') }}"></input>
                         <br>
                     </div>
                     <div>
                         <label>Cocuriculum Marks: </label>
-                        <input type="text" name="cocuriculummarks" value="{{ old('cocuriculummarks') }}"></input>
+                        <input type="number" name="cocuriculummarks" value="{{ old('cocuriculummarks') }}"></input>
                         <label>/100</label>
                         <br>
                     </div>

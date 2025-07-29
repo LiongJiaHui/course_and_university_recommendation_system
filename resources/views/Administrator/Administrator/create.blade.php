@@ -5,9 +5,22 @@
 
 <body>
     <x-header title="Creation of the Administrator"/>
+
     <div>
         <div>
-            <form action="{{ route('') }}" method="POST">
+        @if ($errors->any())
+            <div>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        </div>
+
+        <div>
+            <form action="{{ route('admin.store') }}" method="POST">
                 @csrf
 
                 <div class="container">
@@ -29,7 +42,7 @@
             </form>
         </div>
         <div>
-            <a href="">
+            <a href="{{ route('admin.list') }}">
                 <button>Back</button>
             </a>
         </div>

@@ -6,3 +6,7 @@ scikit-learn
 python-dotenv
 flask-cors
 joblib
+matplotlib
+numpy
+geopy
+googlemaps

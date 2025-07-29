@@ -16,15 +16,15 @@ class CreateCoursedetailsTable extends Migration
         Schema::create('coursedetails', function (Blueprint $table) {
             $table->id();
             $table->string('course_honour_name');
-            $table->unsignedDouble('tuition_fees');
+            $table->decimal('tuition_fees', 10, 2)->unsigned();
             $table->unsignedInteger('credit_hours');
-            $table->unsignedDouble('duration');
-            $table->unsignedInteger('minimum_grade');
-            $table->string('specific_subjects');
-            $table->unsignedInteger('merit_mark')->nullable();
+            $table->decimal('duration', 5, 2)->unsigned();
+            $table->decimal('minimum_grade', 5, 2)->unsigned();
+            $table->text('specific_subjects');
+            $table->decimal('merit_mark', 5, 2)->unsigned()->nullable();
 
 
-            $table->unsignedInteger('english_requirement_skill');
+            $table->decimal('english_requirement_skill', 5, 2)->unsigned();
 
             // If ranking number is 1, ranking_the_no_start is 1, but ranking_the_no_end is Null. 
 
@@ -43,9 +43,9 @@ class CreateCoursedetailsTable extends Migration
 
             $table->boolean('course_qualification'); // true for qualified, false for not qualified
             $table->string('course_website');
-            $table->foreignId('course_id')->constrained('courses')->onDelete('set null');
+            $table->foreignId('course_id')->nullable()->constrained('courses')->onDelete('set null');
             $table->foreignId('university_id')->constrained('universities')->onDelete('cascade');
-            $table->foreignId('admin_id')->constrained('admins')->onDelete('set null');
+            $table->foreignId('admin_id')->nullable()->constrained('admins')->onDelete('set null');
             $table->timestamps();
         });
     }

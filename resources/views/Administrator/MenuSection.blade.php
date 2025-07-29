@@ -8,25 +8,25 @@
         <div>
             <div>
                 <div>
-                    <a href="">
+                    <a href="/University">
                         <button>University Information</button>
                     </a>
                 </div>
 
                 <div>
-                    <a href="">
+                    <a href="/CourseCategory">
                         <button>Course Category</button>
                     </a>
                 </div>
 
                 <div>
-                    <a href="">
+                    <a href="/Course">
                         <button>Course Information</button>
                     </a>
                 </div>
 
                 <div>
-                    <a href="">
+                    <a href="{{ route('admin.list') }}">
                         <button>Administrator Management</button>
                     </a>
                 </div>

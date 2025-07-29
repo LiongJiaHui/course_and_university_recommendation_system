@@ -7,18 +7,30 @@
     <x-header title="Update the University"/>
     <div>
         <div>
-            <form method="POST">
+        @if ($errors->any())
+            <div>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        </div>
+
+        <div>
+            <form action="{{ route('university.update', $university->id) }}" method="POST">
                 @csrf
                 @method('PUT')
 
                 <div class="container">
                     <label>University Name: </label>
-                    <input type="text"></input>
+                    <input type="text" name="uni_name" required></input>
                 </div>
 
                 <div class="container">
                     <label>University Address: </label>
-                    <input type="text"></input>
+                    <input type="text" name="uni_address" required></input>
                 </div>
 
                 <div class="container">
@@ -47,12 +59,12 @@
 
                 <div class="container">
                     <label>Campus: </label>
-                    <input type="text"></input>
+                    <input type="text" name="campus" required></input>
                 </div>
 
                 <div class="container">
                     <label>Website: </label>
-                    <input type="text"></input>
+                    <input type="url" ></input>
                 </div>
 
                 <div class="container">

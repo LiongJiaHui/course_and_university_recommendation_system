@@ -1,6 +1,6 @@
 <head>
     <title>Course and University Recommendation System: Student Preferences</title>
-    <link rel="stylesheet" href="{{ asset('css/student.css') }}">
+    <link rel="stylesheet" href="{{ asset('') }}">
 
 </head>
 
@@ -9,14 +9,14 @@
         <x-header title="Student Preferences" />
         <div>
             <div>
-                <form method="POST">
+                <form action="{{ url('/studentpreferences') }}" method="POST">
                     <div>
                         <label>University Type: </label>
                         <input type="radio" name="unitype" id="public_uni" value="public">Public Universities</input>
-                        <input type="radio" name="unitype" id="private_uni">Private Universities</input>
+                        <input type="radio" name="unitype" id="private_uni" value="private">Private Universities</input>
                     </div>
                     <div>
-                        <input type="radio" name="preference"></input>
+                        <input type="radio" name="preference" value="location"></input>
                         <label>Location: </label>
                         <select>
                             <option>--- Select State ---</option>
@@ -38,11 +38,11 @@
                         </select>
                     </div>
                     <div>
-                        <input type="radio" name="preference"></input>
+                        <input type="radio" name="preference" value="shortest_distance"></input>
                         <label>Shortest Distance</label>
                     </div>
                     <div>
-                        <input type="radio" name="preference"></input>
+                        <input type="radio" name="preference" value="area_of_interest"></input>
                         <label>Area of Interest: </label>
                         <select>
                             <option></option>

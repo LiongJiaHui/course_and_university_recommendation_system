@@ -9,19 +9,17 @@
         <x-header title="Administrator Login Page" />
         <div>
             <div>
-
-
-                <form>
+                <form method="POST" action="{{ url('/adminLogin') }}">
                     @csrf
                     <div>
                         <label>Name: </label>
-                        <input type="text"></input>
+                        <input type="text" name="admin_name"></input>
                         <br>
                     </div>
 
                     <div>
                         <label>Password: </label>
-                        <input type="text"></input>
+                        <input type="password" name="password"></input>
                         <br>
                     </div>
 

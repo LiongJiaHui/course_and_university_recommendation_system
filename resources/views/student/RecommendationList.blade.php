@@ -7,7 +7,17 @@
     <x-header title="Recommendation List" />
 
     <div>
+        <div>
+            <table>
+                
+            </table>
+        </div>
 
+        <div>
+            <a>
+                <button>Back to Main Page</button>
+            </a>
+        </div>
     </div>
 
     <x-footer />

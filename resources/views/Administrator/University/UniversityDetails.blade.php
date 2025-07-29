@@ -34,7 +34,11 @@
 
                 <tr>
                     <td>Website: </td>
-                    <td>{{ $university->website }}</td>
+                    <td>
+                        <a href="{{ $university->website }}" target="_blank">
+                            {{ $university->course_website }}
+                        </a>
+                    </td>
                 </tr>
 
                 <tr>
@@ -93,23 +97,54 @@
                     <td>{{ $university->area_id }}</td>
                 </tr>
 
-                <tr>
-                    <td>
-                        <form action="{{  }}" method="POST">
-                            <button id="update">Update</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="{{  }}" method="POST">
-                            <button id="delete">Delete</button>
-                        </form>
-                    </td>
-                </tr>
+                  <tr>
+                        <td>
+                            <form action="{{ route('university.edit', $university->id) }}" method="POST">
+                                <button id="update">Update</button>
+                            </form>
+                        </td>
+                    </tr>
+            </table>
+        </div>
+
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Course name</th>
+                        <th>Credit Hours</th>
+                        <th>Duration</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($university->coursedetails as $course) 
+                        <tr>
+                            <td>{{ $course->id }}</td>
+                            <td>{{ $course->course_honour_name }}</td>
+                            <td>{{ $course->credit_hours }}</td>
+                            <td>{{ $course->duration }}</td>
+                            <td>
+                                <a href="{{ route('course.show', $course->id) }}">
+                                    <button>Details</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ route('course.edit', $course->id) }}">
+                                    <button>Update</button>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
             </table>
         </div>
 
         <div id="">
-            <a href="" id="">
+            <a href="{{ route('university.list') }}" id="">
                 <button id="">Back</button>
             </a>
         </div>

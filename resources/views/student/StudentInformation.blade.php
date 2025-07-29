@@ -9,7 +9,7 @@
         <x-header title="Student Information" />
         <div>
             <div>
-                <form action="http://127.0.0.1:5000/student-information" method="POST">
+                <form action="{{ url('/studentinformation') }}" method="POST">
                     @csrf
 
                     <div>

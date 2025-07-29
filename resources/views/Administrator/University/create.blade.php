@@ -8,17 +8,29 @@
     <x-header title="University Creation"/>
     <div>
         <div>
-            <form action="{{  }}" method="POST">
+        @if ($errors->any())
+            <div>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        </div>
+
+        <div>
+            <form action="{{ route('university.store') }}" method="POST">
                 @csrf
 
                 <div class="container">
                     <label>University Name: </label>
-                    <input type="text"></input>
+                    <input type="text" name="uni_name" required></input>
                 </div>
 
                 <div class="container">
                     <label>University Address: </label>
-                    <input type="text"></input>
+                    <input type="text" name="uni_address" required></input>
                 </div>
 
                 <div class="container">
@@ -47,18 +59,18 @@
 
                 <div class="container">
                     <label>Campus: </label>
-                    <input type="text"></input>
+                    <input type="text" name="campus" required></input>
                 </div>
 
                 <div class="container">
                     <label>Website: </label>
-                    <input type="text"></input>
+                    <input type="url" name="website" placeholder="https://example.com" required></input>
                 </div>
 
                 <div class="container">
-                    <label></label>
-                    <input type="radio">Public University</input>
-                    <input type="radio">Private University</input>
+                    <label>University Type: </label>
+                    <input name="uni_type" type="radio" value="Public">Public University</input>
+                    <input name="uni_type" type="radio" value="Private">Private University</input>
                 </div>
 
                 <div class="container">
@@ -67,23 +79,36 @@
                 </div>
 
                 <div class="container">
+                    <label>Email: </label>
+                    <input type="email" name="email" required></input>
+                </div>
+
+                <div class="container">
                     <label>QS Ranking: </label>
-                    <input type="number"></input>
+                    <input type="number" name="ranking_qs_no_start" required></input>
                     <label>to<label>
                     <label>( </label>
-                    <input type="number"></input>
-                    <input type="number" id="year" name="year" min="2000" max="2500"></input>
+                    <input type="number" name="ranking_qs_no_end" required></input>
+                    <input type="number" id="year" name="ranking_qs_year" min="2000" max="2500" required></input>
                     <label> )</label>
                 </div>
 
                 <div class="container">
                     <label>THE Ranking: </label>
-                    <input type="number"></input>
+                    <input type="number" name="ranking_the_no_start"></input>
                     <label>to<label>
-                    <input type="number"></input>
+                    <input type="number" name="ranking_the_no_end"></input>
                     <label>( </label>
-                    <input type="number" id="year" name="year" min="2000" max="2500"></input>
+                    <input type="number" id="year" name="ranking_the_year" min="2000" max="2500"></input>
                     <label> )</label>
+                </div>
+
+                <div class="container">
+                    <!-- Admin -->
+                    <label>Admin: </label>
+                    <select name="admin">
+                        <option value="">--- Select Admin ---</option>
+                    </select>
                 </div>
 
                 <div class="container">

@@ -18,4 +18,13 @@ class Course extends Model
         'course_detail_id', 
         'admin_id',
     ];
+
+    // relationship
+    public function admin() {
+        return $this->belongsTo(Admin::class, 'admin_id');
+    }
+
+    public function coursedetail() {
+        return $this->hasMany(CourseDetail::class, 'course_detail_id');
+    }
 }

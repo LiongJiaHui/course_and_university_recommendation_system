@@ -7,18 +7,31 @@
     <x-header title="Update the Administrator"/>
     <div>
         <div>
-            <form method="POST">
+        @if ($errors->any())
+            <div>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        </div>
+
+        <div>
+            <form action="{{ route('admin.update', $admin->id) }}" method="POST">
                 @csrf
+                @method('PUT')
 
                 <div class="container">
                     <label>Admin Name: </label>
-                    <input name="admin_name" type="text" value="{{ old('admin_name'), $admin->admin_name }}" required></input>
+                    <input name="admin_name" type="text" value="{{ old('admin_name', $admin->admin_name) }}" required></input>
                     <br>
                 </div>
 
                 <div class="container">
                     <label>Password: </label>
-                    <input name="password" type="text" value="{{ old('password'), $admin->password }}" required></input>
+                    <input name="password" type="password" value="{{ old('password') }}" required></input>
                     <br>
                 </div>
 
@@ -27,9 +40,9 @@
                 </div>
             </form>
         </div>
-        <div id="">
-            <a href="">
-                <button >Back</button>
+        <div id="back_button">
+            <a href="{{ route('admin.list') }}">
+                <button id="back_button">Back</button>
             </a>
         </div>
     </div>
