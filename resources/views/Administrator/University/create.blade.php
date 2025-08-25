@@ -1,7 +1,7 @@
 <head>
     <title>Course and University Recommendation System: Creation of the University</title>
 
-
+    <link rel="stylesheet" href="{{ asset('css/admin_create.css') }}">
 </head>
 
 <body>
@@ -25,12 +25,12 @@
 
                 <div class="container">
                     <label>University Name: </label>
-                    <input type="text" name="uni_name" required></input>
+                    <textarea name="uni_name" required></textarea>
                 </div>
 
                 <div class="container">
                     <label>University Address: </label>
-                    <input type="text" name="uni_address" required></input>
+                    <textarea name="uni_address" required></textarea>
                 </div>
 
                 <div class="container">
@@ -49,7 +49,7 @@
 
                 <div class="container">
                     <label>State: </label>
-                    <select name="state" id="state-dropdown" required>
+                    <select name="state_id" id="state-dropdown" required>
                         <option value="">---Select State---</option>
                         @foreach ($states as $state)
                             <option value="{{ $state->id }}">{{ $state->state_name }}</option>
@@ -69,8 +69,8 @@
 
                 <div class="container">
                     <label>University Type: </label>
-                    <input name="uni_type" type="radio" value="Public">Public University</input>
-                    <input name="uni_type" type="radio" value="Private">Private University</input>
+                    <input type="radio" name="uni_type" value="Public" {{ old('uni_type') == 'Public' ? 'checked' : '' }}> Public University</input>
+                    <input type="radio" name="uni_type" value="Private" {{ old('uni_type') == 'Private' ? 'checked' : '' }}> Private University</input>
                 </div>
 
                 <div class="container">
@@ -85,11 +85,11 @@
 
                 <div class="container">
                     <label>QS Ranking: </label>
-                    <input type="number" name="ranking_qs_no_start" required></input>
+                    <input type="number" name="ranking_qs_no_start"></input>
                     <label>to<label>
+                    <input type="number" name="ranking_qs_no_end"></input>
                     <label>( </label>
-                    <input type="number" name="ranking_qs_no_end" required></input>
-                    <input type="number" id="year" name="ranking_qs_year" min="2000" max="2500" required></input>
+                    <input type="number" id="year" name="ranking_qs_year" min="2000" max="2500"></input>
                     <label> )</label>
                 </div>
 
@@ -103,26 +103,20 @@
                     <label> )</label>
                 </div>
 
-                <div class="container">
-                    <!-- Admin -->
-                    <label>Admin: </label>
-                    <select name="admin">
-                        <option value="">--- Select Admin ---</option>
-                    </select>
-                </div>
-
-                <div class="container">
-
-                </div>
-
                 <div>
-                    <button type="submit">Create University Information</button>
+                    <label>Created By: </label>
+                    <input type="text" value="{{ session('admin_name') }}" readonly></input>
+                    <input type="hidden" name="admin_id" value="{{ session('admin_id') }}"></input>
+                </div>
+
+                <div id="submit">
+                    <button type="submit" id="submit">Create University Information</button>
                 </div>
             </form>
         </div>
-        <div>
-            <a href="">
-                <button>Back</button>
+        <div id="back">
+            <a href="{{ route('university.list') }}">
+                <button id="back">Back</button>
             </a>
         </div>
     </div>

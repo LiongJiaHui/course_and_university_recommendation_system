@@ -15,10 +15,10 @@ class CourseDetail extends Model
     [
         'course_honour_name', 
         'tuition_fees', 
-        'credit_hour',
+        'credit_hours',
         'duration',
         'minimum_grade',
-        'specific_subject', 
+        'specific_subjects', 
         'merit_mark', 
         'english_requirement_skill', 
         'ranking_qs_no_start_by_subject', 
@@ -29,7 +29,7 @@ class CourseDetail extends Model
         'ranking_the_year_by_subject', 
         'course_qualification', 
         'course_website', 
-        'uni_id', 
+        'university_id', 
         'course_id', 
         'admin_id'
     ];

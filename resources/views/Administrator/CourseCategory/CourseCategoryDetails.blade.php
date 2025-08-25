@@ -1,6 +1,6 @@
 <head>
     <title>Course and University Recommendation System: Details of the Course Category</title>
-
+    <link rel="stylesheet" href="{{ asset('css/admin_details.css') }}">
 </head>
 
 <body>
@@ -44,7 +44,7 @@
 
         <div id="">
             <a href="{{ route('coursecategory.list') }}" id="">
-                <button id="">Back</button>
+                <button id="back">Back</button>
             </a>
         </div>
     </div>

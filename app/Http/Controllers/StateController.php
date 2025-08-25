@@ -8,12 +8,16 @@ use App\Models\State;
 
 class StateController extends Controller
 {
-    public function getAreas($state_id){
-        $areas = Area::where('state_id', $state_id)->select('area_name')
-        ->distinct()
-        ->pluck('area_name');
-
+    public function getAreas($state_name){
+        $state = State::where('state_name', $state_name)->first();
+        if ($state) {
+        // Return distinct area names only
+        $areas = Area::where('state_id', $state->id)
+                    ->distinct()
+                    ->pluck('area_name');
         return response()->json($areas);
+    }
+        return response()->json([]);
     }
 
     public function passState(){

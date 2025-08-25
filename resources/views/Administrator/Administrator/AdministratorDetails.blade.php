@@ -1,6 +1,6 @@
 <head>
     <title>Course and University Recommendation System: Details of the administrator</title>
-
+    <link rel="stylesheet" href="{{ asset('css/admin_details.css') }}">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
                     <tr>
                         <td>
                             <a href="{{ route('admin.edit', $admin->id) }}">
-                                <button id="update">Update</button>
+                                <button class="update">Update</button>
                             </a>
                         </td>
                     </tr>
@@ -36,7 +36,7 @@
 
         <div>
             <a href="{{ route('admin.list') }}">
-                <button>Back</button>
+                <button id="back">Back</button>
             </a>
         </div>
     </div>

@@ -1,6 +1,6 @@
 <head>
     <title>Course and University Recommendation System: Creation of the course</title>
-
+    <link rel="stylesheet" href="{{ asset('css/admin_create.css') }}">
 
 </head>
 
@@ -30,104 +30,108 @@
 
                 <div class="container">
                     <label>Total Tuition Fees: </label>
-                    <input type="number" min="0" name="tuition_fees" required></input>
+                    <input type="number" min="0" name="tuition_fees" step="0.01" required></input>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>Credit Hour: </label>
                     <input type="number" name="credit_hours" required></input>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>Duration: </label>
-                    <input type="number" name="duration" required></input>
+                    <input type="number" name="duration" step="0.01" required></input>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>Minimum Grade: </label>
-                    <input type="number" name="minimum_grade" required></input>
+                    <input type="number" name="minimum_grade" step="0.01" required></input>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>Specific Subjects: </label>
                     <input type="text" name="specific_subjects" placeholder="if multiple subjects, must have comma to distinguish"></input>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>Merit Mark: </label>
-                    <input type="number" name="merit_mark" required></input>
+                    <input type="number" name="merit_mark" step="0.01"></input>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>English Requirement Skill (MUET Marks):</label>
-                    <input type="number" name="english_requirement_skill" required></input>
+                    <input type="number" name="english_requirement_skill" step="0.1" required></input>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>QS Ranking By Subject: <label>
-                    <input type="number" name=""></input>
+                    <input type="number" name="ranking_qs_no_start_by_subject"></input>
                     <label>to<label>
+                    <input type="number" name="ranking_qs_no_end_by_subject"></input>
                     <label>( </label>
-                    <input type="number"></input>
-                    <input type="number" id="year" name="year" min="2000" max="2500"></input>
+                    <input type="number" id="year" name="year" min="2000" max="2500" name="ranking_qs_year_by_subject"></input>
                     <label> )</label>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>THE Ranking By Subject: <label>
-                    <input type="number"></input>
+                    <input type="number" name="ranking_the_no_start_by_subject"></input>
                     <label>to<label>
+                    <input type="number" name="ranking_the_no_end_by_subject"></input>
                     <label>( </label>
-                    <input type="number"></input>
-                    <input type="number" id="year" name="year" min="2000" max="2500"></input>
+                    <input type="number" id="year" name="year" min="2000" max="2500" name="ranking_the_year_by_subject"></input>
                     <label> )</label>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>Course Qualification (MQA Certification required): </label>
-                    <input type="radio" name="course_qua" value="True">Yes</input>
-                    <input type="radio" name="course_qua" value="False">No</input>
+                    <input type="radio" name="course_qualification" value="1">Yes</input>
+                    <input type="radio" name="course_qualification" value="0">No</input>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>Course Website: </label>
                     <input type="url" name="course_website" required></input>
                 </div>
 
-                <div>
-                    <label>Course Category: </label>
-                    <select>
-                        <option>--- Select Course Category ---</option>
+                <div class="container">
+                    <label>University & Campus:</label>
+                    <select name="university_id">
+                        <option value="">--- Select University & Campus ---</option>
+                        @foreach ($universities as $university)
+                            <option value="{{ $university->id }}">
+                                {{ $university->uni_name }} - {{ $university->campus }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                 <div class="container">
+                    <label>Admin: </label>
+                    <select name="admin_id">
+                        <option value="">--- Select Admin ---</option>
+                        @foreach ($admins as $admin)
+                             <option value="{{ $admin->id }}">
+                                {{ $admin->admin_name }} ({{ $admin->id }})
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="container">
+                    <label>Course Aspect & Category: </label>
+                    <select name="course_id">
+                        <option value="">--- Select Course Aspect & ---</option>
+                        @foreach ($categories as $category)
+                             <option value="{{ $category->id }}">
+                                {{ $category->course_aspect }} - {{ $category->course_category }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
 
                 <div>
-                    <label>Course Aspect: </label>
-                    <select>
-                        <option>--- Select Course Aspect ---</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label>University: </label>
-                    <select>
-                        <option value="">--- Select University ---</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label>Branch: </label>
-                    <select>
-                        <option>--- Select Branch ---</option>
-                    </select>
-                </div>
-
-                <div>
-                    <!--Show the admin_id and admin_name-->
-                </div>
-
-                <div>
-                    <button type="submit">Submit</button>
+                    <button type="submit" id="submit">Create course</button>
                 </div>
             </form>
         </div>

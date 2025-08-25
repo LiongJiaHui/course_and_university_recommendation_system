@@ -1,36 +1,30 @@
 <head>
     <title>Course and University Recommendation System: Course List</title>
-    
-    <style>
-        .pagination {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .pagination nav > div {
-            display: inline-block;
-        }
-    </style>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
+    <link rel="stylesheet" href="{{ asset('css/admin_list.css') }}">
 </head>
 
 <body>
     <x-header title="Course List"/>
     <div>
-        <div id="create">
-            <form action="{{ route('course.list') }}" method="GET" class="create">
-                <input type="text" name="search" class="search" placeholder="Search Course" value="{{ request('search') }}"></input>
-                <button type="submit">Search</button>
-            </form>
+        <div>
+            <div id="search">
+                <form action="{{ route('course.list') }}" method="GET" class="create">
+                    <input type="text" name="search" class="search" placeholder="Search Course" value="{{ request('search') }}"></input>
+                    <button type="submit" class="search">Search</button>
+                </form>
+            </div>
+
+            <div id="create">
+                <form action="{{ route('course.create') }}" method="GET">
+                    <button type="submit" class="create">New Course</button>
+                </form>
+            </div>
         </div>
 
-        <div id="create">
-            <form action="{{ route('course.create') }}" method="GET">
-                <button type="submit" class="create">New Course</button>
-            </form>
-        </div>
+        <br>
 
         <div>
             <table>
@@ -98,13 +92,13 @@
             </table>
         </div>
 
-        <div>
+        <div id="page_number">
             {{ $courses->appends(['search' => request('search')])->links('pagination::bootstrap-4')  }}
         </div>
 
-        <div id="">
-            <a href="/adminMenu" id="">
-                <button id="">Back</button>
+        <div id="back">
+            <a href="/adminMenu" id="back">
+                <button id="back">Back</button>
             </a>
         </div>
     </div>

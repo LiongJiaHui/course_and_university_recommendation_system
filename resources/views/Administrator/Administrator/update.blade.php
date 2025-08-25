@@ -1,6 +1,6 @@
 <head>
     <title>Course and University Recommendation System: Update the Adminsitrator Details</title>
-
+    <link rel="stylesheet" href="{{ asset('css/admin_create.css') }}">
 </head>
 
 <body>
@@ -36,7 +36,7 @@
                 </div>
 
                 <div>
-                    <button type="submit">Submit</button>
+                    <button type="submit" id="submit">Update admin</button>
                 </div>
             </form>
         </div>

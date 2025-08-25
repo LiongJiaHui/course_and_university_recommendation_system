@@ -1,6 +1,6 @@
 <head>
     <title>Course and University Recommendation System: Creation of the Course Category</title>
-
+    <link rel="stylesheet" href="{{ asset('css/admin_create.css') }}">
 
 </head>
 
@@ -20,15 +20,15 @@
         </div>
 
         <div>
-            <form action="{{ route('course.store') }}" method="POST">
+            <form action="{{ route('coursecategory.store') }}" method="POST">
                 @csrf
 
-                <div>
+                <div class="container">
                     <label>Course Category: </label>
                     <input type="text" name="course_category" required></input>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>Course Aspect: </label>
                     <select name="course_aspect" required>
                         <option value="">--- Select Course Aspect ---</option>
@@ -39,24 +39,25 @@
                         <option value="Medical">Medical</option>
                         <option value="Sciences">Sciences</option>
                         <option value="Legal">Legal</option>
+                        <option value="Social Sciences">Social Sciences</option>
                     </select>
                 </div>
 
-                 <div>
+                <div class="container">
                     <label>Created By: </label>
                     <input type="text" value="{{ session('admin_name') }}" readonly></input>
                     <input type="hidden" name="admin_id" value="{{ session('admin_id') }}"></input>
                 </div>
 
-                <div>
-                    <button type="submit">Submit</button>
+                <div id="submit">
+                    <button type="submit" id="submit">Submit</button>
                 </div>
             </form>
         </div>
 
-        <div id="back_button">
-            <a href="/adminMenu">
-                <button id="back_button">Back</button>
+        <div id="back">
+            <a href="{{ route('coursecategory.list') }}">
+                <button id="back">Back</button>
             </a>
         </div>
     </div>

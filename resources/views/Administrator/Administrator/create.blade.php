@@ -1,6 +1,6 @@
 <head>
     <title>Course And University Recommendation System: Creation of the Administrator</title>
-
+    <link rel="stylesheet" href="{{ asset('css/admin_create.css') }}">
 </head>
 
 <body>
@@ -36,14 +36,14 @@
                 </div>
 
                 <div>
-                    <button type="submit">Submit</button>
+                    <button type="submit" id="submit">Create admin</button>
                     <br>
                 </div>
             </form>
         </div>
         <div>
             <a href="{{ route('admin.list') }}">
-                <button>Back</button>
+                <button id="back">Back</button>
             </a>
         </div>
     </div>

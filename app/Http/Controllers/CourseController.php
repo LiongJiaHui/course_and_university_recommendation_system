@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Course;
+use App\Models\Admin;
 
 class CourseController extends Controller
 {
@@ -40,7 +41,8 @@ class CourseController extends Controller
     // edit
     public function edit ($id) {
         $category = Course::findOrFail($id);
-        return view('Administrator.CourseCategory.update', compact('category'));
+        $admins = Admin::all();
+        return view('Administrator.CourseCategory.update', compact('category', 'admins'));
     }
 
     // update
@@ -49,7 +51,8 @@ class CourseController extends Controller
 
         $validated_data = $request->validate([
             'course_category' => 'required|string',
-            'course_aspect' => 'required|string'
+            'course_aspect' => 'required|string',
+            'admin_id' => 'required'
         ]);
 
         $category->update($validated_data);
@@ -66,14 +69,16 @@ class CourseController extends Controller
     
     // create
     public function create () {
-        return view('Administrator.CourseCategory.create');
+        $admins = Admin::all();
+        return view('Administrator.CourseCategory.create', compact('admins'));
     }
 
     // store
     public function store (Request $request) {
         $validated_data = $request->validate([
             'course_category' => 'required|string',
-            'course_aspect' => 'required|string'
+            'course_aspect' => 'required|string',
+            'admin_id' => 'required'
         ]);
 
         Course::create($validated_data);

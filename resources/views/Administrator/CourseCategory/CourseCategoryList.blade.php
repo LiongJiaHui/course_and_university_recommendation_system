@@ -1,18 +1,9 @@
 <head>
     <title>Course and University Recommendation System: Course Category List</title>
 
-    <style>
-        .pagination {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .pagination nav > div {
-            display: inline-block;
-        }
-    </style>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('css/admin_list.css') }}">
 </head>
 
 <body>
@@ -26,7 +17,7 @@
         </div>
 
          <div id="create">
-            <form action="http://localhost:8000/CourseCategory/create" method="GET">
+            <form action="{{ route('coursecategory.create') }}" method="GET">
                 <button type="submit" class="create">New Course</button>
             </form>
         </div>
@@ -76,13 +67,13 @@
             </table>
         </div>
 
-        <div>
+        <div id="page_number">
             {{ $categories->appends(['search' => request('search')])->links('pagination::bootstrap-4')  }}
         </div>
 
-        <div id="">
-            <a href="/adminMenu" id="">
-                <button id="">Back</button>
+        <div id="back">
+            <a href="/adminMenu" id="back">
+                <button id="back">Back</button>
             </a>
         </div>
     </div>

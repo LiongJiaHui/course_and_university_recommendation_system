@@ -18,6 +18,7 @@ class University extends Model
         "website",
         "uni_type",
         "contact_no",
+        "email", 
         "ranking_qs_no_start",
         "ranking_qs_no_end", 
         "ranking_qs_year", 

@@ -8,11 +8,9 @@ use App\Models\Area;
 
 class AreaController extends Controller
 {
-    public function getPostCodes($area_id){
-        $postcode = Area::where('area_name', $area_id)
-                ->pluck('postcode')
-                ->unique();
-        
-        return response()->json($postcode);
+    public function getPostCodes($area_name){
+        $postcodes = Area::where('area_name', $area_name)
+                     ->pluck('postcode'); // multiple postcodes
+    return response()->json($postcodes);
     }
 }

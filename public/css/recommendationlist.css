@@ -1,0 +1,49 @@
+div {
+    margin: 20px;
+}
+
+div.container {
+    border-radius: 10px;
+    border: solid 2px black;
+    padding: 10px;
+}
+
+p {
+    font-size: 20px;
+}
+
+p.course {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    border: 3px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+button#detail {
+    display: block;
+    margin: 0 auto;
+    border: 3px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+}

@@ -9,6 +9,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseDetailController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PythonController;
+use App\Http\Controllers\SubjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,28 +28,36 @@ Route::get('/', function () {
 });
 
 // Student Information route
-Route::get('/studentinformation', function () {
+Route::get('/studentinformations', function () {
     return view('student.StudentInformation');
 })->name('studentinformation');
-Route::post('/studentinformation', [PythonController::class, 'storeStudentInfo']);
+Route::post('/studentinformations', [PythonController::class, 'storeStudentInfo'])->name('studentinformations.submit');
 
 // Subject Information route
-Route::get('/subjectinformation', function () {
+Route::get('/subjectinformations', function () {
     return view('student.SubjectInformation');
-})->name('subjectinformation');
-Route::post('/subjectinformation', [PythonController::class, 'storeSubjectInfo']);
+})->name('subjectinformations');
+Route::post('/subjectinformations', [PythonController::class, 'storeSubjectInfo'])->name('subjectinformations.submit');
 
 // Student Preferences route
 Route::get('/studentpreferences', function () {
     return view('student.Preferences');
 })->name('studentpreferences');
-Route::post('/studentpreferences', [PythonController::class, 'submitAll']);
+Route::post('/studentpreferences', [PythonController::class, 'submitAll'])->name('studentpreferences.submit');
 
 // State and Area routes
-Route::get('/get-areas/{state_id}', [StateController::class, 'getAreas']);
+Route::get('/get-areas/{state_name}', [StateController::class, 'getAreas']);
 Route::get('/get-postcodes/{area_name}', [AreaController::class, 'getPostCodes']);
-Route::get('/studentinformation', [StateController::class, 'passState']);
+Route::get('/studentinformation
+', [StateController::class, 'passState']);
 
+// // show the subjects for the SubjectInformation.blade.php
+// Route::get('/subjectinformation-get-subject', [SubjectController::class, 'subjectInformation']);
+// Route::post('/subjectinformation-post-subject', [SubjectController::class, 'subjectInformation']);
+
+// -----------------------------------------------------------------------------
+Route::get('/studentpreferences/recommendations', [PythonController::class, 'getRecommendationsFromAPI'])->name('recommendation.list');
+Route::get('/studentpreferences/recommendations/{id}', [PythonController::class, 'showDetails'])->name('recommendation.details');
 
 // -----------------------------------------------------------------------------
 
@@ -74,7 +83,7 @@ Route::put('/University/{id}', [UniversityController::class, 'update'])->name('u
 
 Route::delete('/University/{id}', [UniversityController::class, 'destroy'])->name('university.destroy'); // delete the university
 
-Route::get('/University/create', [UniversityController::class, 'create'])->name('university.create'); // show creation form
+Route::get('/Universities/create', [UniversityController::class, 'create'])->name('university.create'); // show creation form
 
 Route::post('/Universities', [UniversityController::class, 'store'])->name('university.store'); // store the data into the database
 
@@ -93,7 +102,7 @@ Route::put('/Course/{id}', [CourseDetailController::class, 'update'])->name('cou
 
 Route::delete('/Course/{id}', [CourseDetailController::class, 'destroy'])->name('course.destroy'); // delete the course details
 
-Route::get('/Course/create', [CourseDetailController::class, 'create'])->name('course.create'); // show creation form
+Route::get('/Courses/create', [CourseDetailController::class, 'create'])->name('course.create'); // show creation form
 
 Route::post('/Courses', [CourseDetailController::class, 'store'])->name('course.store'); // store the data into the database
 
@@ -111,7 +120,7 @@ Route::put('/CourseCategory/{id}', [CourseController::class, 'update'])->name('c
 
 Route::delete('/CourseCategory/{id}', [CourseController::class, 'destroy'])->name('coursecategory.destroy'); // delete the course category
 
-Route::get('/CourseCategory/create', [CourseController::class, 'create'])->name('coursecategory.create'); // show creation form
+Route::get('/CourseCategories/create', [CourseController::class, 'create'])->name('coursecategory.create'); // show creation form
 
 Route::post('/CourseCategories', [CourseController::class, 'store'])->name('coursecategory.store'); // store the data into the database
 

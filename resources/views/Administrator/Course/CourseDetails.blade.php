@@ -1,6 +1,6 @@
 <head>
     <title>Course and University Recommendation System: Details of the Course</title>
-
+    <link rel="stylesheet" href="{{ asset('css/admin_details.css') }}">
 
 </head>
 
@@ -145,18 +145,21 @@
 
                      <tr>
                             <td>
-                                <form action="{{ route('course.edit', $course->id) }}" method="POST">
-                                    <button id="update">Update</button>
-                                </form>
                             </td>
                         </tr>
                 </table>
             </div>
         </div>
 
-         <div id="">
-            <a href="{{ route('course.list') }}" id="">
-                <button id="">Back</button>
+        <div>
+            <form action="{{ route('course.edit', $course->id) }}" method="POST">
+                <button class="update">Update Course</button>
+            </form>
+        </div>
+
+         <div id="back">
+            <a href="{{ route('course.list') }}" id="back">
+                <button id="back">Back</button>
             </a>
         </div>
     </div>

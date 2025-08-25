@@ -1,0 +1,56 @@
+div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+table {
+    margin: 10px;
+    font-size: 20px;
+    border: solid 1px black;
+    border-radius: 10px;
+    width: 100%;
+}
+
+tr {
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+button.detail {
+    display: block;
+    margin: 0 auto;
+    border: 3px solid black;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+button.update {
+    display: block;
+    margin: 0 auto;
+    border: 3px solid black;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+button#back {
+    background-color: Grey;
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+}

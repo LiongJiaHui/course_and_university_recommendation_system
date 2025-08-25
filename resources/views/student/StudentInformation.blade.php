@@ -9,29 +9,29 @@
         <x-header title="Student Information" />
         <div>
             <div>
-                <form action="{{ url('/studentinformation') }}" method="POST">
+                <form action="{{ route('studentinformations.submit') }}" method="POST">
                     @csrf
 
-                    <div>
+                    <div class="container">
                         <label>Name: </label>
                         <input type="text" name="name" id="name" placeholder="" value="{{ old('name') }}" required></input>
                         <br>
                     </div>
 
-                    <div>
+                    <div class="container">
                         <label>Address: </label>
                         <input type="text" name="address" id="address" placeholder="" value="{{ old('address') }}" required></input>
                         <br>
                     </div>
 
-                    <div>
+                    <div class="container">
                         <label>Postcode:</label>
                         <select id="postcode-dropdown" name="postcode" required>
                             <option value="">--- Select Postcode ---</option>
                         </select>
                     </div>
 
-                    <div>
+                    <div class="container">
                         <label>Area: </label>
                         <select name="area" id="area-dropdown" required>
                             <option value="">--- Select Area ---</option>
@@ -39,12 +39,12 @@
                         <br>
                     </div>
 
-                    <div>
+                    <div class="container">
                         <label>State: </label>
                         <select name="state" id="state-dropdown" required>
-                            <option value="">---Select State---</option>
+                            <option value="">--- Select State ---</option>
                             @foreach ($states as $state)
-                                <option value="{{ $state->id }}">{{ $state->state_name }}</option>
+                                <option value="{{ $state->state_name }}">{{ $state->state_name }}</option>
                             @endforeach
                         </select>
                         <br>
@@ -61,11 +61,6 @@
                         <button id="back-btn">Back</button>
                     </a>
                 </div>
-                <div id="back-btn">
-                    <a href="subjectinformation" id="back-btn">
-                        <button id="back-btn">Next</button>
-                    </a>
-                </div>
             </div>
         </div>
         <x-footer />
@@ -74,43 +69,40 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
-        document.getElementById('state-dropdown').addEventListener('change', function() {
-            const stateId = this.value;
-            const areaDropdown = document.getElementById('area-dropdown');
-            const postcodeDropdown = document.getElementById('postcode-dropdown');
+document.getElementById('state-dropdown').addEventListener('change', function() {
+    const stateName = this.value;
+    const areaDropdown = document.getElementById('area-dropdown');
+    const postcodeDropdown = document.getElementById('postcode-dropdown');
 
-            areaDropdown.innerHTML = '<option value="">Loading...</option>';
-            postcodeDropdown.innerHTML = '<option value="">Loading...</option>';
+    areaDropdown.innerHTML = '<option value="">Loading...</option>';
+    postcodeDropdown.innerHTML = '<option value="">--- Select Postcode ---</option>';
 
-            if (stateId) {
-                axios.get(`/get-areas/${stateId}`)
-                    .then(response => {
-                        areaDropdown.innerHTML = '<option value="">--- Select Area ---</option>';
-                        response.data.forEach(areaName => {
-                            areaDropdown.innerHTML += `<option value="${areaName}">${areaName}</option>`;
-                        });
-                    });
-            }
-        });
+    if (stateName) {
+        axios.get(`/get-areas/${encodeURIComponent(stateName)}`)
+            .then(response => {
+                areaDropdown.innerHTML = '<option value="">--- Select Area ---</option>';
+                response.data.forEach(areaName => {
+                    areaDropdown.innerHTML += `<option value="${areaName}">${areaName}</option>`;
+                });
+            });
+    }
+});
 
-        document.getElementById('area-dropdown').addEventListener('change', function() {
-            const areaName = this.value;
-            const postcodeDropdown = document.getElementById('postcode-dropdown');
+document.getElementById('area-dropdown').addEventListener('change', function() {
+    const areaName = this.value;
+    const postcodeDropdown = document.getElementById('postcode-dropdown');
 
-            postcodeDropdown.innerHTML = '<option value="">Loading...</option>';
+    postcodeDropdown.innerHTML = '<option value="">Loading...</option>';
 
-            if (areaName) {
-                axios.get(`/get-postcodes/${areaName}`)
-                    .then(response => {
-                        postcodeDropdown.innerHTML = '<option value="">--- Select Postcode ---</option>';
-                        response.data.forEach(postcode => {
-                            postcodeDropdown.innerHTML += `<option value="${postcode}">${postcode}</option>`;
-                        });
-                    });
-            }
-        });
-
-        
-
+    if (areaName) {
+        axios.get(`/get-postcodes/${encodeURIComponent(areaName)}`)
+            .then(response => {
+                postcodeDropdown.innerHTML = '<option value="">--- Select Postcode ---</option>';
+                response.data.forEach(postcode => {
+                    postcodeDropdown.innerHTML += `<option value="${postcode}">${postcode}</option>`;
+                });
+            });
+    }
+});
     </script>
 </body>

@@ -1,5 +1,6 @@
 <head>
     <title>Course And University Recommendation System: Administrator Menu Section</title>
+    <link rel="stylesheet" href="{{ asset('css/MainPage.css') }}">
 </head>
 
 <body>

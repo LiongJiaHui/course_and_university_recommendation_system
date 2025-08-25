@@ -1,6 +1,6 @@
 <head>
     <title>Course and University Recommendation System: Update the Course Category</title>
-
+    <link rel="stylesheet" href="{{ asset('css/admin_create.css') }}">
 
 </head>
 
@@ -24,12 +24,12 @@
                 @csrf
                 @method('PUT')
 
-                <div>
+                <div class="container">
                     <label>Course Category: </label>
                     <input type="text" value="{{ old('course_category', $category->course_category) }}"></input>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>Course Aspect: </label>
                     <select name="course_aspect">
                         <option value="">--- Select Course Aspect ---</option>
@@ -43,19 +43,27 @@
                     </select>
                 </div>
 
-                <div>
-                    <label>Admin Id: </label>
-                    <input value="{{ old('admin_id', $category->admin_id) }}"></input>
+                <div class="container">
+                    <label>Admin: </label>
+                    <select name="admin_id">
+                        <option value="">--- Select Admin ---</option>
+                        @foreach ($admins as $admin)
+                             <option value="{{ $admin->id }}"
+                                {{ old('admin_id', $category->admin_id) == $admin->id ? 'selected' : '' }}>
+                                {{ $admin->admin_name }} ({{ $admin->id }})
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
                 
-                <div class="container">
-                    <button>Submit</button>
+                <div>
+                    <button id="submit">Submit</button>
                 </div>
             </form>
         </div>
         <div>
             <a href="{{ route('coursecategory.list') }}">
-                <button>Back</button>
+                <button id="back">Back</button>
             </a>
         </div>
     </div>

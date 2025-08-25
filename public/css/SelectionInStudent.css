@@ -1,0 +1,144 @@
+div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+div.button-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    border: 3px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+button:hover {
+    background-color: burlywood;
+}
+
+button#back-btn {
+    margin-right: auto;
+    width: 100%;
+}
+
+button#next-btn {
+    margin-left: auto;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+select {
+    margin: 0 auto;
+    width: 50%;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 20px;
+}
+
+option {
+    margin: 0 auto;
+    width: 50%;
+    font-size: 20px;
+    padding: 10px;
+}
+
+label {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+    margin: 20px,
+}
+
+input {
+    font-size: 20px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    transform: scale(1.2);   /* slightly bigger, nicer look */
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+/* General container style */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 20px;
+    border: 1px solid black;
+    align-items: center;
+}
+
+/* Options for each preference (Location, Area of Interest, etc.) */
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* align to left */
+    gap: 10px;
+}
+
+/* For grouped checkbox lists (Location, Area of Interest) */
+.select ul {
+    columns: 2; /* show in 2 columns */
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    padding-left: 0;
+    margin: 0;
+}
+
+.select ul li {
+    break-inside: avoid; /* prevent items from splitting */
+    margin-bottom: 6px;
+}
+
+/* Checkbox + label alignment */
+.select label {
+    cursor: pointer;
+    align-items: center; /* align checkbox & text */
+    font-size: 18px;
+}
+
+.select input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.7); /* make boxes slightly bigger */
+}
+
+input[type="checkbox"]{
+    transform: scale(1.7);
+}
+
+
+.option-header {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* space between checkbox and label */
+}

@@ -1,6 +1,6 @@
 <head>
     <title>Course and University Recommendation System: Details of the University</title>
-
+    <link rel="stylesheet" href="{{ asset('css/admin_details.css') }}">
 </head>
 
 <body>
@@ -35,8 +35,8 @@
                 <tr>
                     <td>Website: </td>
                     <td>
-                        <a href="{{ $university->website }}" target="_blank">
-                            {{ $university->course_website }}
+                        <a href="{{ $university->website }}">
+                            {{ $university->website }}
                         </a>
                     </td>
                 </tr>
@@ -99,9 +99,9 @@
 
                   <tr>
                         <td>
-                            <form action="{{ route('university.edit', $university->id) }}" method="POST">
-                                <button id="update">Update</button>
-                            </form>
+                            <a href="{{ route('university.edit', $university->id) }}">
+                                <button class="update">Update</button>
+                            </a>
                         </td>
                     </tr>
             </table>
@@ -129,12 +129,12 @@
                             <td>{{ $course->duration }}</td>
                             <td>
                                 <a href="{{ route('course.show', $course->id) }}">
-                                    <button>Details</button>
+                                    <button class="detail">Details</button>
                                 </a>
                             </td>
                             <td>
                                 <a href="{{ route('course.edit', $course->id) }}">
-                                    <button>Update</button>
+                                    <button class="update">Update</button>
                                 </a>
                             </td>
                         </tr>
@@ -143,9 +143,9 @@
             </table>
         </div>
 
-        <div id="">
-            <a href="{{ route('university.list') }}" id="">
-                <button id="">Back</button>
+        <div id="back">
+            <a href="{{ route('university.list') }}" id="back">
+                <button id="back">Back</button>
             </a>
         </div>
     </div>

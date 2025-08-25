@@ -1,6 +1,6 @@
 <head>
     <title>Course and University Recommendation System: Update the course</title>
-    <link>
+    <link rel="stylesheet" href="{{ asset('css/admin_create.css') }}">
 </head>
 
 <body>
@@ -43,27 +43,27 @@
                     <input type="number" name="duration" value="{{ old('duration', $course->duration) }}"></input>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>Minimum Grade: </label>
                     <input type="number" name="minimum_grade" value="{{ old('minimum_grade', $course->minimum_grade) }}"></input>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>Specific Subjects: </label>
                     <input type="text" name="specific_subjects" value="{{ old('specific_subjects', $course->specific_subjects) }}"></input>
                 </div>
 
-                <div>
+                <div class="container" >
                     <label>Merit Mark: </label>
                     <input type="number" name="merit_mark" value="{{ old('merit_mark', $course->merit_mark) }}"></input>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>English Requirement Skill (MUET Marks):</label>
                     <input type="number" name="english_requirement_skill" value="{{ old('english_requirement_skill', $course->english_requirement_skill) }}"></input>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>QS Ranking By Subject: <label>
                     <input type="number" name="ranking_qs_no_start_by_subject" value="{{ old('ranking_qs_no_start_by_subject', $course->ranking_qs_no_start_by_subject) }}"></input>
                     <label>to<label>
@@ -73,7 +73,7 @@
                     <label> )</label>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>THE Ranking By Subject: <label>
                     <input type="number" name="ranking_the_no_start_by_subject" value="{{ old('ranking_the_no_start_by_subject', $course->ranking_the_no_start_by_subject ) }}"></input>
                     <label>to<label>
@@ -83,17 +83,18 @@
                     <label> )</label>
                 </div>
 
-                <div>
+                <div class="container">
+                    <label>Course Website: </label>
+                    <input type="url" name="course_website" value="{{ old('course_website', $course->course_website) }}"></input>
+                </div>
+
+                <div class="container">
                     <label>Course Qualification (MQA Certification required): </label>
-                    <input type="radio" name="course_qua" value="True">Yes</input>
-                    <input type="radio" name="course_qua" value="False">No</input>
+                    <input type="radio" name="course_qualification" value="1" {{ old('course_qualification', $course->course_qualification) == '1' ? 'checked' : '' }}>Yes</input>
+                    <input type="radio" name="course_qualification" value="0" {{ old('course_qualification', $course->course_qualification) == '0' ? 'checked' : ''}}>No</input>
                 </div>
 
-                <div>
-                    <!--This is for the course category-->
-                </div>
-
-                <div>
+                <div class="container">
                     <label>University & Campus:</label>
                     <select name="university_id">
                         <option value="">--- Select University & Campus ---</option>
@@ -106,7 +107,7 @@
                     </select>
                 </div>
 
-                 <div>
+                 <div class="container">
                     <label>Admin: </label>
                     <select name="admin_id">
                         <option value="">--- Select Admin ---</option>
@@ -119,7 +120,7 @@
                     </select>
                 </div>
 
-                <div>
+                <div class="container">
                     <label>Course Aspect & Category: </label>
                     <select name="course_id">
                         <option value="">--- Select Course Aspect & ---</option>
@@ -133,13 +134,13 @@
                 </div>
 
                 <div>
-                    <button type="submit">Update</button>
+                    <button type="submit" id="submit">Update Course</button>
                 </div>
             </form>
         </div>
         <div class="back-button">
             <a href="{{ route('course.list') }}">
-                <button>Back</button>
+                <button id="back">Back</button>
             </a>
         </div>
     </div>
