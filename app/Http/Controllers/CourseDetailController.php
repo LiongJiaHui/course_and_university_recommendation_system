@@ -21,7 +21,7 @@ class CourseDetailController extends Controller
                   ->orWhere();
         }
 
-        $courses = $query->paginate(25);
+        $courses = $query->paginate(5);
 
         return view('Administrator.Course.CourseList', compact('courses'));
     }

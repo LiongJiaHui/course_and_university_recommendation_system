@@ -22,7 +22,7 @@ class CourseController extends Controller
             });
         }
 
-        $categories = $query->paginate(25);
+        $categories = $query->paginate(5);
 
         return view('Administrator.CourseCategory.CourseCategoryList', compact('categories'));
     }

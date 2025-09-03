@@ -1,49 +1,81 @@
-div {
-    margin: 20px;
+/* Grid wrapper for 2 columns */
+div > div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+    gap: 5px;
+    margin: 10px 30px;
 }
 
+/* Card style */
 div.container {
-    border-radius: 10px;
-    border: solid 2px black;
-    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 220px;
 }
 
+/* Hover effect */
+div.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Course title */
+p.course {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 3px;
+    color: #222;
+}
+
+/* General text (stacked vertically) */
 p {
     font-size: 20px;
+    margin: 3px 0;
+    color: #333;
+    line-height: 1.4;
 }
 
-p.course {
-    font-size: 35px;
-    font-weight: bold;
-}
-
-a {
-    text-decoration: none;
-}
-
+/* Button styling */
 button {
     display: block;
-    margin: 0 auto;
-    width: 50%;
-    border: 3px solid black;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 20px;
+    margin: 5px auto 0;
+    width: 70%;
+    padding: 10px 15px;
+    font-size: 15px;
     font-weight: bold;
     border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: #007bff;
+    color: #fff;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
+button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Green detail button */
 button#detail {
-    display: block;
-    margin: 0 auto;
-    border: 3px solid black;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 8px;
+    background: #28a745;
+    color: #fff;
+}
+
+button#detail:hover {
+    background: #1e7e34;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    div > div {
+        grid-template-columns: 1fr;
+    }
 }

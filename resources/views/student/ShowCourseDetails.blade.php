@@ -21,7 +21,7 @@
 
                     <tr>
                         <td>Total Tuition Fees</td>
-                        <td>{{ $course->tuition_fees }}</td>
+                        <td>RM {{ $course->tuition_fees }}</td>
                     </tr>
 
                     <tr>

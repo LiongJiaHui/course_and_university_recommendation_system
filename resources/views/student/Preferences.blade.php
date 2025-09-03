@@ -13,7 +13,7 @@
                     @csrf
                     <div class="container">
                         <div class="option">
-                            <label>University Type: </label>
+                            <label class="section-label">University Type: </label>
                             <input type="radio" name="unitype" id="public_uni" value="public" required>
                             <label>Public Universities</label>
                             <input type="radio" name="unitype" id="private_uni" value="private" required>
@@ -24,10 +24,10 @@
                         <div class="options">
                             <div class="option-header">
                                 <input type="checkbox" name="preference[]" value="location"></input>
-                                <label>Location: </label>
+                                <label class="section-label">Location: </label>
                             </div>
                             <div class="select">
-                                <ul style="list-style: none; padding: 0;">
+                                <ul class="state-list">
                                     <li>
                                         <label>
                                             <input type="checkbox" name="location[]" value="Johor"> Johor </input>
@@ -111,7 +111,7 @@
                         <div class="options">
                             <div class="option-header">
                                 <input type="checkbox" name="preference[]" value="shortest_distance"></input>
-                                <label>Shortest Distance</label>
+                                <label class="section-label">Shortest Distance</label>
                             </div>
                         </div>
                     </div>
@@ -119,10 +119,10 @@
                         <div class="options">
                             <div class="option-header">
                                 <input type="checkbox" name="preference[]" value="area_of_interest"></input>
-                                <label>Area of Interest: </label>
+                                <label class="section-label">Area of Interest: </label>
                             </div>
                             <div class="select">
-                                <ul style="list-style: none; padding: 0;">
+                                <ul class="interest-list">
                                     <li>
                                         <label>
                                             <input type="checkbox" name="area_of_interest[]" value="Engineering">Engineering</input>
@@ -156,26 +156,23 @@
                         <div class="options">
                             <div class="option-header">
                                 <input type="checkbox" name="preference[]" value="expected_fees"></input>
-                                <label>Expected Total Tuition Fees (For whole study): </label>
+                                <label class="section-label">Expected Total Tuition Fees (For whole study): </label>
                                 <input type="number" min="0" name="tuition_fees_start"></input>
                                 <label> to </label>
                                 <input type="number" name="tuition_fees_end"></input>
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <button type="submit">Submit</button>
+
+                    <div class="button-row">
+                        <button class="btn back-btn">
+                            <a href="subjectinformation">Back</a>
+                        </button>
+                        <button type="submit" class="btn next-btn">Submit</button>
                     </div>
                 </form>
             </div>
 
-             <div class="button-row">
-                <div id="back-btn">
-                    <a href="subjectinformation" id="back-btn">
-                        <button id="back-btn">Back</button>
-                    </a>
-                </div>
-            </div>
         </div>
         <x-footer />
     </div>

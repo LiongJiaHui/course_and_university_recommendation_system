@@ -12,11 +12,11 @@
                     <div class="container">
                         <p class="course">Course Name: {{ $row['course_honour_name'] ?? 'N/A' }}</p>
                         <p>University: {{ $row['uni_name'] ?? 'N/A' }}</p>
-                        <p>Duration: {{ $row['duration'] ?? 'N/A' }}</p>
-                        <p>Tuition Fees: {{ $row['tuition_fees'] ?? 'N/A' }}</p>
+                        <p>Duration: {{ $row['duration'] ?? 'N/A' }} years</p>
+                        <p>Tuition Fees: RM {{ $row['tuition_fees'] ?? 'N/A' }}</p>
                         @if(isset($row['distance']))
                             <p>
-                                Distance: {{ $row['distance']  }} 
+                                Distance: {{ $row['distance']  }} km
                             </p>
                         @endif
                         <div id="Details" >

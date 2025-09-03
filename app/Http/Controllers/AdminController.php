@@ -44,7 +44,7 @@ class AdminController extends Controller
             });
         }
 
-        $admins = $query->paginate(25);
+        $admins = $query->paginate(5);
 
         return view('Administrator.Administrator.administratorList', compact('admins'));
     }

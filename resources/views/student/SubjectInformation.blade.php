@@ -1,6 +1,6 @@
 <head>
     <title>Course and University Recommendation System: Subject Information</title>
-    <link rel="stylesheet" href="{{ asset('css/SelectionInStudent.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/subjectSelection.css') }}">
     
 </head>
 
@@ -40,8 +40,7 @@
                             "Bahasa Tamil", 
                             "Biology", 
                             "Chemistry", 
-                            "Economics", 
-                            "Further Mathematics", 
+                            "Economics",  
                             "Geografi", 
                             "Information and Communication Technology",
                             "Kesusasteraan Melayu Komunikatif", 
@@ -91,17 +90,20 @@
                         <br>
                     </div>
 
-                    <button type="submit">Submit</button>
+                     <div class="button-row">
+                       <div id="back-btn">
+                            <a href="studentinformation" id="back-btn">
+                                <button id="back-btn">Back</button>
+                            </a>
+                        </div>
+
+                        <div class="next-btn">
+                            <button type="submit" id="next-btn">Next</button>
+                        </div>
+                    </div>
                 </form>
             </div>
 
-            <div class="button-row">
-                <div id="back-btn">
-                    <a href="studentinformation" id="back-btn">
-                        <button id="back-btn">Back</button>
-                    </a>
-                </div>
-            </div>
         </div>
     </div>
     <x-footer />

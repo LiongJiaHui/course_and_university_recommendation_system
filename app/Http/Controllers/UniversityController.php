@@ -34,7 +34,7 @@ class UniversityController extends Controller
             $query->orderByRaw('ISNULL(ranking_the_no_start), ranking_the_no_start ASC');
         }
 
-        $universities = $query->paginate(25);
+        $universities = $query->paginate(5);
 
         return view('Administrator.University.UniversityList', compact('universities'));
 

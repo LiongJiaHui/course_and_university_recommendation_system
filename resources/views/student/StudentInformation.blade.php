@@ -50,18 +50,21 @@
                         <br>
                     </div>
 
-                    <button type="submit">Submit</button>
+                    <div class="button-row">
+                        <div class="back-btn">
+                            <a href="/" id="back-btn">
+                                <button id="back-btn">Back</button>
+                            </a>
+                        </div>
+
+                        <div class="next-btn">
+                            <button type="submit" id="next-btn">Next</button>
+                        </div>
+                    </div>
                     <br>
                 </form>
             </div>
-            
-            <div class="button-row">
-                <div id="back-btn">
-                    <a href="/" id="back-btn">
-                        <button id="back-btn">Back</button>
-                    </a>
-                </div>
-            </div>
+        
         </div>
         <x-footer />
     </div>
