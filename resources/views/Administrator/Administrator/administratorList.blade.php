@@ -35,29 +35,33 @@
                 </thead>
 
                 <tbody>
-                    @foreach($admins as $admin)
-                    <tr>
-                        <td>{{ $admin->id }}</td>
-                        <td>{{ $admin->admin_name }}</td>
-                        <td>
-                            <a href="{{ route('admin.show', $admin->id) }}">
-                                <button class="Detail">Detail</button>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ route('admin.edit', $admin->id) }}">
-                                <button class="update">Update</button>
-                            </a>
-                        </td>
-                        <td>
-                            <form action="{{ route('admin.destroy',  $admin->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="delete" onclick="return confirm('Confirm to delete?');">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
+                    @forelse($admins as $admin)
+                        <tr>
+                            <td>{{ $admin->id }}</td>
+                            <td>{{ $admin->admin_name }}</td>
+                            <td>
+                                <a href="{{ route('admin.show', $admin->id) }}">
+                                    <button class="Detail">Detail</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ route('admin.edit', $admin->id) }}">
+                                    <button class="update">Update</button>
+                                </a>
+                            </td>
+                            <td>
+                                <form action="{{ route('admin.destroy',  $admin->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="delete" onclick="return confirm('Confirm to delete?');">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="5">No admins found</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

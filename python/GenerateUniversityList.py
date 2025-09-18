@@ -6,17 +6,15 @@ from datetime import datetime
 import os
 
 def generate_university_list(input_data_html):
-  
-  # 1. insert the dataset and input data
 
   # import data from the database
   input_data_db = inputDatabase.collection_data_from_database()
 
   print("The data from the database are exported")
   
-  # 2. generate the university list using decision tree algorithm
+  # generate the university list using decision tree algorithm
 
-  # 2.1 Identify the university type (public or private) and the preferences
+  # Identify the university type (public or private) and the preferences
   uni_type = input_data_html.get("unitype")
   subjects = input_data_html.get("subjects", [])
   MUETmarks= float(input_data_html.get("MUETmarks", 0))
@@ -38,7 +36,7 @@ def generate_university_list(input_data_html):
       except: 
         print(f"Invalid mark value: {subject.get('marks')}")
 
-    pngk = ((total_marks / 4.00) / number_of_subjects) * 90
+    pngk = ((total_marks / number_of_subjects) / 4.00) * 90
     cocuriculum = float(input_data_html.get("cocuriculummarks", 0.0)) * 0.1
     merit_mark = pngk + cocuriculum
 
@@ -63,13 +61,13 @@ def generate_university_list(input_data_html):
   elapsed_uni_type = end_uni_type - start_uni_type
   print("Time taken for generating the recommendation list: ", elapsed_uni_type)
 
-  # 2.4 rearrange the list based on the preferences 
+  # rearrange the list based on the preferences 
 
   print("Goes to the preferences")
   start_preferences = datetime.now()
 
   preferences = input_data_html.get("preference")
-  print(preferences)
+  # print(preferences)
 
   Recommendation_list = sort.sort_recommended_list(input_data_html, compared_result, preferences)
 
@@ -80,6 +78,7 @@ def generate_university_list(input_data_html):
   print("Done the preferences sections")
 
   Recommendation_list = Recommendation_list[:9]
+  print(Recommendation_list)
 
   return Recommendation_list
 

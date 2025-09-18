@@ -26,27 +26,53 @@ class PythonController extends Controller
     }
 
     public function storeSubjectInfo (Request $request) {
+        $validated = $request->validate([
+            'subjectCount' => 'required|integer|min:4|max:5',
+            'subject1' => 'required|string',
+            'subject1marks' => 'required|numeric|between:0,4',
+            'subject2' => 'required|string',
+            'subject2marks' => 'required|numeric|between:0,4',
+            'subject3' => 'required|string',
+            'subject3marks' => 'required|numeric|between:0,4',
+            'subject4' => 'required|string',
+            'subject4marks' => 'required|numeric|between:0,4',
+            'subject5' => 'nullable|string',
+            'subject5marks' => 'nullable|numeric|between:0,4',
+            'MUETmarks' => 'required|numeric|between:1,5',
+            'cocuriculummarks' => 'required|integer|between:0,100',
+        ]);
+
+        $subjectCount = $request->input('subjectCount');
         $subjectArray = [];
+        $actualCount = 0;
 
         for ($i = 1; $i <= 5; $i++) {
-            $subject = $request->input("subject{$i}");
-            $marks = $request->input("subject{$i}marks");
+            $subjectNameKey = "subject{$i}";
+            $subjectMarksKey = "subject{$i}marks";
 
-            if ($subject && $marks !== null) {
+            if ($request->filled($subjectNameKey) && $request->filled($subjectMarksKey)) {
+                $actualCount++;
                 $subjectArray[] = [
-                    'name' => $subject, 
-                    'marks' => $marks
+                    'name' => $request->input($subjectNameKey),
+                    'marks' => $request->input($subjectMarksKey),
                 ];
             }
         }
 
+        if ($subjectCount != $actualCount) {
+            throw \Illuminate\Validation\ValidationException::withMessages([
+                'subjectCount' => ["Subject count ($subjectCount) does not match actual subjects provided ($actualCount)."],
+            ]);
+        }
+
         $subjectData = [
-            'subjects' => $subjectArray, 
-            'MUETmarks' => $request->input('MUETmarks'), 
+            'subjects' => $subjectArray,
+            'MUETmarks' => $request->input('MUETmarks'),
             'cocuriculummarks' => $request->input('cocuriculummarks'),
         ];
 
         session(['subject_info' => $subjectData]);
+
         return redirect('studentpreferences');
     }
 
@@ -67,26 +93,38 @@ class PythonController extends Controller
         $subjectInfo = session('subject_info');
         // dd($request->path());
 
+         // Handle missing session gracefully
+        if (!$studentInfo || !$subjectInfo) {
+            $recommendations = [];
+            return view('student.RecommendationList', compact('recommendations'))->with('data', $recommendations);
+        }
+
         $finalPayload = array_merge($studentInfo, $subjectInfo, $validatedPreferences);
 
         // dd($finalPayload);
 
-        // Send to Python
-        $response = Http::post('http://127.0.0.1:5000/final_submit', $finalPayload);
+        try {
+            $response = Http::post('http://127.0.0.1:5000/final_submit', $finalPayload);
 
-        // dd($response->body());
+            if ($response->successful()) {
+                $recommendations = json_decode(trim($response->body()), true);
 
-        if ($response->successful()) {
-            $recommendations = json_decode(trim($response->body()), true);
+                // Ensure it is an array
+                if (!is_array($recommendations)) {
+                    $recommendations = [];
+                }
+            } else {
+                $recommendations = [];
+            }
 
-            // dd($recommendations);
-
-            return view('student.RecommendationList', [
-                'data' => $recommendations
-            ]);
+        } catch (\Exception $e) {
+            // Catch network or HTTP errors
+            $recommendations = [];
         }
 
-        return back()->withErrors('Failed to get recommendations from Python.');
+        return view('student.RecommendationList', [
+            'data' => $recommendations
+        ]);
     }
 
     public function getRecommendationsFromAPI()

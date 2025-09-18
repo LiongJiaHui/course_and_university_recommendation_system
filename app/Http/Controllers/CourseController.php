@@ -8,25 +8,32 @@ use App\Models\Admin;
 
 class CourseController extends Controller
 {
-    // index
-    public function index (Request $request) {
-        $query = Course::query();
+     // index
+    public function index(Request $request)
+    {
+        $query = Course::query()->orderBy('id', 'asc');
 
-        // searching
         if ($request->has('search')) {
             $search = $request->input('search');
 
-            $query->where(function ($q) use ($search) {
-                $q->where('course_category', 'LIKE', "%{$search}%")
-                ->orWhere('course_aspect', 'LIKE', "%{$search}%");
-            });
-        }
+            if ($search === '') {
+                // Return empty paginator
+                $categories = Course::whereRaw('0=1')->paginate(5);
+            } else {
+                $query->where(function ($q) use ($search) {
+                    $q->where('course_category', 'LIKE', "%{$search}%")
+                    ->orWhere('course_aspect', 'LIKE', "%{$search}%");
+                });
 
-        $categories = $query->paginate(5);
+                $categories = $query->paginate(5);
+            }
+        } else {
+            $categories = $query->paginate(5);
+        }
 
         return view('Administrator.CourseCategory.CourseCategoryList', compact('categories'));
     }
-    
+
     // show 
     public function show ($id) {
         $category = Course::with('admin')->find($id);

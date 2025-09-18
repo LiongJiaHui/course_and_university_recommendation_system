@@ -72,6 +72,8 @@ Route::get('/adminMenu', function(){
 })->name('adminMenu');
 
 
+
+
 // University section
 Route::get('/University', [UniversityController::class, 'index'])->name('university.list');
 

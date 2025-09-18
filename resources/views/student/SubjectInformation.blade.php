@@ -13,7 +13,7 @@
 
                     @csrf
                     <div class="container">
-                        <label>Number of subjects</label>
+                        <label>Number of subjects: </label>
                         <div class="option">
                             <input type="radio" name="subjects" value="4" onclick="toggleSubjects(4)" >4 subjects</input>
                             <input type="radio" name="subjects" value="5" onclick="toggleSubjects(5)">5 subjects</input>
@@ -63,7 +63,7 @@
                         @for ($i = 2; $i <= 5; $i++)
                         <div class="container">
                             <div id="subjectSection{{ $i }}">
-                                <label>Subject {{ $i }}</label>
+                                <label>Subject {{ $i }}: </label>
                                 <select name="subject{{ $i }}">
                                     <option value="">--- Select Subject ---</option>
                                     @foreach ($subjects as $subject)
@@ -92,7 +92,7 @@
 
                      <div class="button-row">
                        <div id="back-btn">
-                            <a href="studentinformation" id="back-btn">
+                            <a href="{{ url('studentinformation') }}" id="back-btn">
                                 <button id="back-btn">Back</button>
                             </a>
                         </div>

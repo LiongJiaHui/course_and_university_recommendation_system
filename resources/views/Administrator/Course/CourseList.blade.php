@@ -44,50 +44,45 @@
                 </thead>
 
                 <tbody>
-                    @foreach($courses as $course)
-                    <tr>
-                        <td>{{ $course->id }}</td>
-                        <td>{{ $course->course_honour_name }}</td>
-                        <td>{{ $course->university_id }}</td>
-                        <td>
-                            @if($course->ranking_qs_no_start_by_subject && !$course->ranking_qs_no_end_by_subject )
-                                {{ $course->ranking_qs_no_start_by_subject }} ({{ $course->ranking_qs_year_by_subject }})
-                            @elseif($course->ranking_qs_no_end_by_subject &&$course->ranking_qs_no_start_by_subject)
-                                {{ $course->ranking_qs_no_start_by_subject }} to {{ $course->ranking_qs_no_end_by_subject }} ({{ $course->ranking_qs_year_by_subject }})
-                            @else 
-                                None
-                            @endif
-                        </td>
-                        <td>
-                            @if($course->ranking_the_no_start_by_subject &&  !$course->ranking_the_no_end_by_subject )
-                                {{ $course->ranking_the_no_start_by_subject }} ({{ $course->ranking_the_year_by_subject }})
-                            @elseif($course->ranking_the_no_end_by_subject &&$course->ranking_the_no_start_by_subject)
-                                {{ $course->ranking_the_no_start_by_subject }} to {{ $course->ranking_the_no_end_by_subject }} ({{ $course->ranking_the_year_by_subject }})
-                            @else 
-                                None
-                            @endif
-                        </td>
-                        <td>{{ $course->admin_id }}</td>
-                        
-                        <td>
-                            <a href="{{ route('course.show', $course->id) }}">
-                                <button class="Detail">Detail</button>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ route('course.edit', $course->id) }}">
-                                <button class="update">Update</button>
-                            </a>
-                        </td>
-                        <td>
-                            <form action="{{ route('course.destroy', $course->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="delete" onclick="return confirm('Confirm to delete?');">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
+                    @forelse($courses as $course)
+                        <tr>
+                            <td>{{ $course->id }}</td>
+                            <td>{{ $course->course_honour_name }}</td>
+                            <td>{{ $course->university_id }}</td>
+                            <td>
+                                @if($course->ranking_qs_no_start_by_subject && !$course->ranking_qs_no_end_by_subject )
+                                    {{ $course->ranking_qs_no_start_by_subject }} ({{ $course->ranking_qs_year_by_subject }})
+                                @elseif($course->ranking_qs_no_end_by_subject && $course->ranking_qs_no_start_by_subject)
+                                    {{ $course->ranking_qs_no_start_by_subject }} to {{ $course->ranking_qs_no_end_by_subject }} ({{ $course->ranking_qs_year_by_subject }})
+                                @else
+                                    None
+                                @endif
+                            </td>
+                            <td>
+                                @if($course->ranking_the_no_start_by_subject && !$course->ranking_the_no_end_by_subject)
+                                    {{ $course->ranking_the_no_start_by_subject }} ({{ $course->ranking_the_year_by_subject }})
+                                @elseif($course->ranking_the_no_end_by_subject && $course->ranking_the_no_start_by_subject)
+                                    {{ $course->ranking_the_no_start_by_subject }} to {{ $course->ranking_the_no_end_by_subject }} ({{ $course->ranking_the_year_by_subject }})
+                                @else
+                                    None
+                                @endif
+                            </td>
+                            <td>{{ $course->admin_id }}</td>
+                            <td><a href="{{ route('course.show', $course->id) }}"><button class="Detail">Detail</button></a></td>
+                            <td><a href="{{ route('course.edit', $course->id) }}"><button class="update">Update</button></a></td>
+                            <td>
+                                <form action="{{ route('course.destroy', $course->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="delete" onclick="return confirm('Confirm to delete?');">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="9" class="text-center">No courses found</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

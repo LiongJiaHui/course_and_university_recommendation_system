@@ -18,7 +18,7 @@
 
          <div id="create">
             <form action="{{ route('coursecategory.create') }}" method="GET">
-                <button type="submit" class="create">New Course</button>
+                <button type="submit" class="create">New Course Category</button>
             </form>
         </div>
 
@@ -38,31 +38,35 @@
                 </thead>
 
                 <tbody>
-                    @foreach ($categories as $category)
-                    <tr>
-                        <td>{{ $category->id }}</td>
-                        <td>{{ $category->course_category }}</td>
-                        <td>{{ $category->course_aspect }}</td>
-                        <td>{{ $category->admin_id }}</td>
-                        <td>
-                            <a href="{{ route('coursecategory.show', $category->id) }}">
-                                <button class="Detail">Detail</button>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ route('coursecategory.edit', $category->id) }}">
-                                <button class="update" >Update</button>
-                            </a>
-                        </td>
-                        <td>
-                            <form action="{{ route('coursecategory.destroy', $category->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="delete" onclick="return confirm('Confirm to delete?');">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
+                    @forelse ($categories as $category)
+                        <tr>
+                            <td>{{ $category->id }}</td>
+                            <td>{{ $category->course_category }}</td>
+                            <td>{{ $category->course_aspect }}</td>
+                            <td>{{ $category->admin_id }}</td>
+                            <td>
+                                <a href="{{ route('coursecategory.show', $category->id) }}">
+                                    <button class="Detail">Detail</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ route('coursecategory.edit', $category->id) }}">
+                                    <button class="update">Update</button>
+                                </a>
+                            </td>
+                            <td>
+                                <form action="{{ route('coursecategory.destroy', $category->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="delete" onclick="return confirm('Confirm to delete?');">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="7" style="text-align:center;">No categories found.</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

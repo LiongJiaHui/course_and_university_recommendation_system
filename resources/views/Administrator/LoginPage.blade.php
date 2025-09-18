@@ -7,19 +7,43 @@
 <body>
     <div>
         <x-header title="Administrator Login Page" />
+
+        {{-- Notification area --}}
+        @if (session('success'))
+            <div class="alert alert-success" >
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li style="color: red; ">{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div>
             <div id="form">
                 <form method="POST" action="{{ url('/adminLogin') }}">
                     @csrf
                     <div class="options">
                         <label>Name: </label>
-                        <input type="text" name="admin_name"></input>
+                        <input type="text" name="admin_name"required></input>
                         <br>
                     </div>
 
                     <div class="options">
                         <label>Password: </label>
-                        <input type="password" name="password"></input>
+                        <input type="password" name="password" required></input>
                         <br>
                     </div>
 

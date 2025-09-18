@@ -19,7 +19,7 @@ def sort_recommended_list(input_data_html, compared_result, preferences):
     if isinstance(locations, str): 
       locations = [locations]
     df = df[df["state_name"].isin(locations)]
-    print(df)
+    # print(df)
     print("Done the Sorting by location")
 
   # # 2.4.2 Area of Interest 
@@ -43,8 +43,24 @@ def sort_recommended_list(input_data_html, compared_result, preferences):
     
     tuition_fees_start = float(input_data_html.get('tuition_fees_start', 0))
     tuition_fees_end = float(input_data_html.get('tuition_fees_end', 0))
-    df = df[(df['tuition_fees'] >= tuition_fees_start) & (df['tuition_fees'] <= tuition_fees_end)]
-    df = df.sort_values(by="tuition_fees")
+
+     # to ensure the tuition_fees_start is less than tuition_fees_end
+    if tuition_fees_start is not None and tuition_fees_end is not None:
+      if tuition_fees_start > tuition_fees_end:
+          pass # invalid range
+        
+        # Handle invalid range
+      if tuition_fees_start > tuition_fees_end:
+            return []  # stop early with no results
+
+        # Handle missing column safely
+      if 'tuition_fees' not in df.columns:
+            return []  # nothing to filter
+
+      df = df[(df['tuition_fees'] >= tuition_fees_start) & 
+                (df['tuition_fees'] <= tuition_fees_end)]
+      df = df.sort_values(by="tuition_fees")
+
 
     print("Done for the sorting by expected tuition fees")
     
@@ -60,11 +76,20 @@ def sort_recommended_list(input_data_html, compared_result, preferences):
 
     for _,row in df.iterrows(): 
       uni_address = f"{row['uni_address']}, {row['area_name']}, {row['state_name']}, Malaysia"
-      distances.append(ftd.find_the_distance_V3(uni_address, input_address))
+      try:
+        dist = ftd.find_the_distance_V3(uni_address, input_address)
+      except Exception as e:
+        # Fail gracefully if API call fails
+        dist = float("inf")   # or 999999 to push it to the end
+      distances.append(dist)
 
     df = df.copy()
-    df["distance"] = distances
-    df = df.sort_values(by="distance")
+    if len(distances) == len(df):
+        df["distance"] = distances
+        df = df.sort_values(by="distance")
+    else:
+        print("Distance mismatch, falling back to QS ranking")
+        df = df.sort_values(by="ranking_qs_no_start")
 
     print("Done the sorting of the distance")
 

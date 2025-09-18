@@ -307,12 +307,13 @@ def compare_result_and_requirement_v2(dataset, subjects, MUETmarks):
         course_id = row['id']
         muet_req = row['muet_required']
 
+        subject_ok = True
+
         # MUET check
         if MUETmarks < muet_req:
             subject_ok = False
 
         # Subject-by-subject check
-        subject_ok = True
         for sub in all_subjects:
             required_mark = row[sub]
             student_mark = student_row.get(sub, 0.0)

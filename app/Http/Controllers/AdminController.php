@@ -12,8 +12,8 @@ class AdminController extends Controller
     // login 
     public function login (Request $request) {
         $request->validate([
-            'admin_name' => 'required|string|min: 4',
-            'password' => 'required|string|min: 8',
+            'admin_name' => 'required|string|min:4',
+            'password' => 'required|string|min:8',
         ]);
 
         $admin = Admin::where('admin_name', $request->admin_name)->first();
@@ -74,13 +74,17 @@ class AdminController extends Controller
     }
 
     // update
-    public function update (Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         $admin = Admin::findOrFail($id);
 
         $validated_data = $request->validate([
-            'admin_name' => 'required|string|min:4', 
-            'password' => 'required|string|min:8'
+            'admin_name' => 'required|string|min:4',
+            'password'   => 'required|string|min:8'
         ]);
+
+        // hash password
+        $validated_data['password'] = Hash::make($validated_data['password']);
 
         $admin->update($validated_data);
 

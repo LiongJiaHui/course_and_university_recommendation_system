@@ -18,7 +18,9 @@ class CourseDetailController extends Controller
         if($request->has('search')) {
             $search = $request->input('search');
             $query->where('course_honour_name', 'LIKE', "%{$search}%")
-                  ->orWhere();
+                  ->orWhere('university_id', 'LIKE', "%{$search}%")
+                  ->orWhere('admin_id', 'LIKE', "%{$search}%")
+                  ;
         }
 
         $courses = $query->paginate(5);
@@ -51,25 +53,25 @@ class CourseDetailController extends Controller
         $course = CourseDetail::findOrFail($id);
 
         $validated_data = $request->validate([
-            'course_honour_name' => 'required',
-            'tuition_fees' => 'required|numeric',
-            'credit_hours' => 'required|numeric', 
-            'duration' => 'required|numeric', 
-            'minimum_grade' => 'required|numeric|max:4.0', 
-            'specific_subjects' => 'nullable',
-            'merit_mark' => 'nullable|numeric|max: 100.00', 
+             'course_honour_name' => 'required|string|max:255', // limit length
+            'tuition_fees' => 'required|numeric|min:0',
+            'credit_hours' => 'required|numeric|min:0', 
+            'duration' => 'required|numeric|min:0', 
+            'minimum_grade' => 'required|numeric|min:0|max:4.0', // add min
+            'specific_subjects' => 'nullable|string',
+            'merit_mark' => 'nullable|numeric|min:0|max:100', 
             'english_requirement_skill' => 'required|numeric|min:1.0|max:5.0', 
-            'ranking_qs_no_start_by_subject' => 'nullable|numeric', 
-            'ranking_qs_no_end_by_subject' => 'nullable|numeric', 
-            'ranking_qs_year_by_subject' => 'nullable|numeric', 
-            'ranking_the_no_start_by_subject' => 'nullable|numeric', 
-            'ranking_the_no_end_by_subject' => 'nullable|numeric', 
-            'ranking_the_year_by_subject' => 'nullable|numeric', 
-            'course_qualification' => 'required', 
-            'course_website' => 'required', 
-            'course_id' => 'required', 
-            'university_id' => 'required', 
-            'admin_id' => 'required'
+            'ranking_qs_no_start_by_subject' => 'nullable|numeric|min:1', 
+            'ranking_qs_no_end_by_subject' => 'nullable|numeric|min:1', 
+            'ranking_qs_year_by_subject' => 'nullable|numeric|min:2000|max:2500', 
+            'ranking_the_no_start_by_subject' => 'nullable|numeric|min:1', 
+            'ranking_the_no_end_by_subject' => 'nullable|numeric|min:1', 
+            'ranking_the_year_by_subject' => 'nullable|numeric|min:2000|max:2500', 
+            'course_qualification' => 'required|boolean', 
+            'course_website' => 'required|url', // validate URL format
+            'course_id' => 'required|exists:courses,id', // check foreign key exists
+            'university_id' => 'required|exists:universities,id', 
+            'admin_id' => 'required|exists:admins,id'
         ]);
 
         if ($validated_data['specific_subjects'] == null) {
@@ -99,25 +101,25 @@ class CourseDetailController extends Controller
     // store
     public function store (Request $request) {
         $validated_data = $request->validate([
-            'course_honour_name' => 'required',
-            'tuition_fees' => 'required|numeric',
-            'credit_hours' => 'required|numeric', 
-            'duration' => 'required|numeric', 
-            'minimum_grade' => 'required|numeric|max:4.0', 
-            'specific_subjects' => 'nullable',
-            'merit_mark' => 'nullable|numeric|max: 100.00', 
+             'course_honour_name' => 'required|string|max:255', // limit length
+            'tuition_fees' => 'required|numeric|min:0',
+            'credit_hours' => 'required|numeric|min:0', 
+            'duration' => 'required|numeric|min:0', 
+            'minimum_grade' => 'required|numeric|min:0|max:4.0', // add min
+            'specific_subjects' => 'nullable|string',
+            'merit_mark' => 'nullable|numeric|min:0|max:100', 
             'english_requirement_skill' => 'required|numeric|min:1.0|max:5.0', 
-            'ranking_qs_no_start_by_subject' => 'nullable|numeric', 
-            'ranking_qs_no_end_by_subject' => 'nullable|numeric', 
-            'ranking_qs_year_by_subject' => 'nullable|numeric', 
-            'ranking_the_no_start_by_subject' => 'nullable|numeric', 
-            'ranking_the_no_end_by_subject' => 'nullable|numeric', 
-            'ranking_the_year_by_subject' => 'nullable|numeric', 
-            'course_qualification' => 'required', 
-            'course_website' => 'required', 
-            'course_id' => 'required', 
-            'university_id' => 'required', 
-            'admin_id' => 'required'
+            'ranking_qs_no_start_by_subject' => 'nullable|numeric|min:1', 
+            'ranking_qs_no_end_by_subject' => 'nullable|numeric|min:1', 
+            'ranking_qs_year_by_subject' => 'nullable|numeric|min:2000|max:2500', 
+            'ranking_the_no_start_by_subject' => 'nullable|numeric|min:1', 
+            'ranking_the_no_end_by_subject' => 'nullable|numeric|min:1', 
+            'ranking_the_year_by_subject' => 'nullable|numeric|min:2000|max:2500', 
+            'course_qualification' => 'required|boolean', 
+            'course_website' => 'required|url', // validate URL format
+            'course_id' => 'required|exists:courses,id', // check foreign key exists
+            'university_id' => 'required|exists:universities,id', 
+            'admin_id' => 'required|exists:admins,id'
         ]);
 
         if ($validated_data['specific_subjects'] == null) {

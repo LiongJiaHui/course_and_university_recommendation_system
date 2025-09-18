@@ -64,7 +64,7 @@ def find_the_distance_V3(dataset_address, input_address):
         if "routes" in response and response["routes"]:
             return round(response['routes'][0]['distance'] / 1000, 2)
     except Exception as e:
-        print("Error in Find the distance: " + e)
+        print("Error in Find the distance: " + str(e))
         pass
         
     print("Completed the the calculation distance between the home address and university address")

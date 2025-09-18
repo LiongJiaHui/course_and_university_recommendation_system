@@ -55,51 +55,55 @@
                 </thead>
 
                 <tbody>
-                    @foreach ( $universities as $university)
-                    <tr>
-                        <td>{{ $university->id }}</td>
-                        <td>{{ $university->uni_name }}</td>
-                        <td>{{ $university->campus }}</td>
-                        <td>{{ $university->uni_type }}</td>
-                        <td>
-                            @if( $university->ranking_qs_no_start && !$university->ranking_qs_no_end )
-                                {{ $university->ranking_qs_no_start }} ({{ $university->ranking_qs_year }})
-                            @elseif( $university->ranking_qs_no_start && $university->ranking_qs_no_end )
-                                {{ $university->ranking_qs_no_start }} to {{ $university->ranking_qs_no_end }} ({{ $university->ranking_qs_year }})
-                            @else  
-                                None 
-                            @endif
-                        </td>
-                        <td>
-                            @if( $university->ranking_the_no_start && !$university->ranking_the_no_end )
-                                {{ $university->ranking_the_no_start }} ({{ $university->ranking_the_year }})
-                            @elseif( $university->ranking_the_no_start && $university->ranking_the_no_end )
-                                {{ $university->ranking_the_no_start }} to {{ $university->ranking_the_no_end }} ({{ $university->ranking_the_year }})
-                            @else
-                                None 
-                            @endif
-                        </td>
-                        <td>{{ $university->admin_id }}</td>
+                    @forelse ( $universities as $university)
+                        <tr>
+                            <td>{{ $university->id }}</td>
+                            <td>{{ $university->uni_name }}</td>
+                            <td>{{ $university->campus }}</td>
+                            <td>{{ $university->uni_type }}</td>
+                            <td>
+                                @if( $university->ranking_qs_no_start && !$university->ranking_qs_no_end )
+                                    {{ $university->ranking_qs_no_start }} ({{ $university->ranking_qs_year }})
+                                @elseif( $university->ranking_qs_no_start && $university->ranking_qs_no_end )
+                                    {{ $university->ranking_qs_no_start }} to {{ $university->ranking_qs_no_end }} ({{ $university->ranking_qs_year }})
+                                @else  
+                                    None 
+                                @endif
+                            </td>
+                            <td>
+                                @if( $university->ranking_the_no_start && !$university->ranking_the_no_end )
+                                    {{ $university->ranking_the_no_start }} ({{ $university->ranking_the_year }})
+                                @elseif( $university->ranking_the_no_start && $university->ranking_the_no_end )
+                                    {{ $university->ranking_the_no_start }} to {{ $university->ranking_the_no_end }} ({{ $university->ranking_the_year }})
+                                @else
+                                    None 
+                                @endif
+                            </td>
+                            <td>{{ $university->admin_id }}</td>
 
-                        <td>
-                            <a href="{{ route('university.show', $university->id) }}">
-                                <button class="Detail">Detail</button>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ route('university.edit', $university->id) }}">
-                                <button class="update">Update</button>
-                            </a>
-                        </td>
-                        <td>
-                            <form action="{{ route('university.destroy', $university->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="delete" onclick="return confirm('Comfirm to delete?');">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
+                            <td>
+                                <a href="{{ route('university.show', $university->id) }}">
+                                    <button class="Detail">Detail</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ route('university.edit', $university->id) }}">
+                                    <button class="update">Update</button>
+                                </a>
+                            </td>
+                            <td>
+                                <form action="{{ route('university.destroy', $university->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="delete" onclick="return confirm('Confirm to delete?');">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="10" style="text-align:center;">No universities found</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
