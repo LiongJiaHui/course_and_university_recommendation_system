@@ -89,7 +89,13 @@ Route::get('/Universities/create', [UniversityController::class, 'create'])->nam
 
 Route::post('/Universities', [UniversityController::class, 'store'])->name('university.store'); // store the data into the database
 
+Route::get('/Universities/create
+', [StateController::class, 'passState_v2']);
 
+Route::get('/Universities/create
+', [StateController::class, 'passState_v3']);
+
+Route::get('/get-areas-by-id/{stateId}', [StateController::class, 'getAreasById']);
 
 
 

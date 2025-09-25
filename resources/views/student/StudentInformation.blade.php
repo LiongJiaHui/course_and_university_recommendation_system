@@ -72,7 +72,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
-document.getElementById('state-dropdown').addEventListener('change', function() {
+    document.getElementById('state-dropdown').addEventListener('change', function() {
     const stateName = this.value;
     const areaDropdown = document.getElementById('area-dropdown');
     const postcodeDropdown = document.getElementById('postcode-dropdown');

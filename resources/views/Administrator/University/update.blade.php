@@ -136,6 +136,7 @@
         const currentArea = @json($university->area->area_name);
         const currentPostcode = @json($university->area->postcode);
         const currentStateId = {{ $university->state_id }};
+        const currentStateName = @json($university->state->state_name); 
 
         window.addEventListener('load', function() {
             const stateDropdown = document.getElementById('state-dropdown');
@@ -144,34 +145,36 @@
 
             // state changes to load areas
             stateDropdown.value = currentStateId;
-            const event = new Event('change');
-            stateDropdown.dispatchEvent(event);
-
-            // Delay to ensure areas loaded before selecting
-            setTimeout(() => {
-                axios.get(`/get-areas/${currentStateId}`).then(response => {
+             axios.get(`/get-areas/${encodeURIComponent(currentStateName)}`)
+                .then(({data}) => {
                     areaDropdown.innerHTML = '<option value="">--- Select Area ---</option>';
-                    response.data.forEach(areaName => {
-                        const selected = areaName === currentArea ? 'selected' : '';
-                        areaDropdown.innerHTML += `<option value="${areaName}" ${selected}>${areaName}</option>`;
+                    (Array.isArray(data) ? data : []).forEach(areaName => {
+                    const selected = (areaName === currentArea) ? 'selected' : '';
+                    areaDropdown.innerHTML += `<option value="${areaName}" ${selected}>${areaName}</option>`;
                     });
 
-                    // Trigger area change to load postcodes
-                    const areaChangeEvent = new Event('change');
-                    areaDropdown.dispatchEvent(areaChangeEvent);
-
-                    setTimeout(() => {
-                        axios.get(`/get-postcodes/${currentArea}`).then(response => {
-                            postcodeDropdown.innerHTML = '<option value="">--- Select Postcode ---</option>';
-                            response.data.forEach(postcode => {
-                                const selected = postcode == currentPostcode ? 'selected' : '';
-                                postcodeDropdown.innerHTML += `<option value="${postcode}" ${selected}>${postcode}</option>`;
-                            });
-                        });
-                    }, 500);
+                    // 3) After areas are filled, load postcodes for the selected/current area
+                    if (currentArea) {
+                    return axios.get(`/get-postcodes/${encodeURIComponent(currentArea)}`);
+                    } else {
+                    postcodeDropdown.innerHTML = '<option value="">--- Select Postcode ---</option>';
+                    }
+                })
+                .then(res => {
+                    if (!res) return; // no area yet
+                    const data = Array.isArray(res.data) ? res.data : [];
+                    postcodeDropdown.innerHTML = '<option value="">--- Select Postcode ---</option>';
+                    data.forEach(pc => {
+                    const selected = (String(pc) === String(currentPostcode)) ? 'selected' : '';
+                    postcodeDropdown.innerHTML += `<option value="${pc}" ${selected}>${pc}</option>`;
+                    });
+                })
+                .catch(err => {
+                    console.error(err);
+                    areaDropdown.innerHTML = '<option value="">(Failed to load areas)</option>';
+                    postcodeDropdown.innerHTML = '<option value="">(Failed to load postcodes)</option>';
                 });
-            }, 500);
-        });
+            });
 
     </script>
 </body>
